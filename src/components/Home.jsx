@@ -32,7 +32,7 @@ export default class Home extends React.Component {
   render() {
     return (
       <div>
-        <h1 style={this.state.style} onClick={() => this.handleClick()}>Generative Shit</h1>
+        <h1 style={this.state.style} onClick={() => this.handleClick()}>no content</h1>
       </div>
     )
   }

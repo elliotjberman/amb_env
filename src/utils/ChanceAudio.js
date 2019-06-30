@@ -1,5 +1,8 @@
 import {Howl} from 'howler';
 
+// TODO: Condense all audio down into this
+// TODO: Possible deterministic indexes?
+
 export default class ChanceAudio {
   constructor(options) {
     this.howls = options.sources.map((source) => {

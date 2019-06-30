@@ -20,14 +20,13 @@
             "type": "chance",
             "options": {
                 "sources": [
-                    "/samples/loser.wav",
                     "/samples/spoken_word.wav"
                 ],
                 "probability": 1,
                 "interval": 1000,
-                "volume": 0.3,
+                "volume": 0.5,
                 "noOverlapping": true,
-                "noRepeats": true
+                "noRepeats": false
             }
         }
     ]

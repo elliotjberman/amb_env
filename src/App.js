@@ -4,7 +4,7 @@ import Home from './components/Home';
 
 function App() {
   return (
-    <Home url={'/polynesian_nightmare.json'} />
+    <Home url={'/joe1.json'} />
   );
 }
 

@@ -1,0 +1,28 @@
+html {
+  background-color: rgb(25,25,25);
+}
+
+html {
+  height: 100%;
+}
+html, body, .home, #root {
+  width: 100%;
+  min-height: 100%;
+  height: 100%;
+}
+#root {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+h1 {
+  display: block;
+  color: white;
+  letter-spacing: -2px;
+  font-size: 24px;
+  cursor: pointer;
+  transition: 200ms;
+}
+h1:hover {
+  opacity: 0.7;
+}

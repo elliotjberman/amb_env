@@ -1,6 +1,7 @@
 import React from 'react';
 import AudioObject from '../utils/AudioObject';
-import {Howl} from 'howler';
+import ChanceAudio from '../utils/ChanceAudio';
+import axios from 'axios';
 
 export default class Home extends React.Component {
   constructor(props) {
@@ -8,10 +9,23 @@ export default class Home extends React.Component {
     this.state = {style: {}};
   }
 
+  async componentDidMount() {
+    const config = await this.getJson(this.props.url);
+    this.elements = config.elements.map((element) => {
+      if (element.type === "chance")
+        return new ChanceAudio(element.options);
+      if (element.type === "loop")
+        return new AudioObject(element.options);
+    });
+  }
+
+  async getJson(url) {
+    const response = await axios.get(url);
+    return response.data;
+  }
+
   handleClick() {
-      this.audio1 = new AudioObject({source: '/samples/science1.wav', loop: true, volume: 0.5});
-      this.audio1.activate();
-      this.audio2 = new AudioObject({source: '/samples/clap1.wav', probability: 0.5, interval: 100});
+      this.elements.forEach(el => el.activate());
       this.setState({style: {color: "red"}});
   }
 

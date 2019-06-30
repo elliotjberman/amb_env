@@ -1,0 +1,41 @@
+{
+    "elements": [
+        {
+            "type": "loop",
+            "options": {
+                "source": "/samples/jo_loop.wav",
+                "volume": 0.5
+            }
+        },
+        {
+            "type": "chance",
+            "options": {
+                "sources": [
+                  "/samples/jo_chord_1.wav",
+                  "/samples/jo_chord_2.wav",
+                  "/samples/jo_chord_3.wav",
+                  "/samples/jo_chord_4.wav",
+                  "/samples/jo_chord_5.wav"
+                ],
+                "probability": 0.5,
+                "interval": 3000,
+                "volume": 0.1
+            }
+        },
+        {
+            "type": "chance",
+            "options": {
+                "sources": [
+                  "/samples/jo_note_1.wav",
+                  "/samples/jo_note_2.wav",
+                  "/samples/jo_note_3.wav",
+                  "/samples/jo_note_4.wav",
+                  "/samples/jo_note_5.wav"
+                ],
+                "probability": 0.01,
+                "interval": 100,
+                "volume": 0.1
+            }
+        }
+    ]
+}

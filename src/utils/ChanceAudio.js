@@ -1,7 +1,6 @@
 import {Howl} from 'howler';
 
 // TODO: Condense all audio down into this
-// TODO: Repeats (on / off)
 
 export default class ChanceAudio {
   constructor(options) {
@@ -17,15 +16,13 @@ export default class ChanceAudio {
   
     this.isSequence = options.isSequence || false;
     this.noRepeats = options.noRepeats || false;
-    this.allowWavOverlap = !options.allowWavOverlap || false;
+    this.noOverlapping = options.noOverlapping || false;
 
     this.index = 0;
-    this.mostRecentHowl = null;
+    this.lastIndex = 0;
   }
 
   activate() {
-    if (this.allowWavOverlap) this.interval += this.getMaxDuration() * 1000;
-    
     setInterval(() => { this.play() }, this.interval);
   }
 
@@ -38,30 +35,35 @@ export default class ChanceAudio {
   }
 
   play() {
-    if (Math.random() <= this.probability) {
-      let howl = this.isSequence ? this.selectHowlAtNextIndex() : this.selectRandomHowl();
-      howl.play();
+    const goodToGo = this.noOverlapping ? !this.howls[this.lastIndex].playing() : true;
+    if (Math.random() <= this.probability && goodToGo) {
+      this.howls[this.index].play();
+      this.goToNextIndex();
     }
   }
 
-  selectRandomHowl() {
-    const filteredHowls = this.howls.filter(howl => howl !== this.mostRecentHowl);
-    
-    const candidateHowls = this.noRepeats ? filteredHowls : this.howls;
-    const chosenHowl = candidateHowls[Math.floor(Math.random() * candidateHowls.length)];
-
-    this.mostRecentHowl = chosenHowl;
-    
-    return chosenHowl;
+  goToRandomIndex() {
+    let randomIndex = Math.floor(Math.random() * this.howls.length);
+    while(this.noRepeats && this.index === randomIndex) {
+      randomIndex = Math.floor(Math.random() * this.howls.length);
+    }
+    this.index = randomIndex;
   }
 
-  selectHowlAtNextIndex() {
+  incrementIndex() {
     if (this.index === this.howls.length - 1) {
       this.index = 0;
-    } else {
-      this.index += 1;
+      return;
     }
+    this.index += 1;
+  }
 
-    return this.howls[this.index];
+  goToNextIndex() {
+    this.lastIndex = this.index;
+    if (this.isSequence) {
+      this.incrementIndex();
+      return;
+    }
+    this.goToRandomIndex();
   }
 }

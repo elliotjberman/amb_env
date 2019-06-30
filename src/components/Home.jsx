@@ -6,11 +6,12 @@ import axios from 'axios';
 export default class Home extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {style: {}};
+    this.state = {style: {}, title: ''};
   }
 
   async componentDidMount() {
     const config = await this.getJson(this.props.url);
+    this.setState({title: config.title});
     
     this.elements = config.elements.map((element) => {
       if (element.type === "chance")
@@ -27,13 +28,22 @@ export default class Home extends React.Component {
 
   handleClick() {
       this.elements.forEach(el => el.activate());
-      this.setState({style: {color: "red"}});
+      this.setState({style: {color: "#db3236"}});
   }
 
   render() {
     return (
       <div>
-        <h1 style={this.state.style} onClick={() => this.handleClick()}>no content</h1>
+
+        <div id="nav">
+          <img id="logo" src="logo.png" />
+          <h3>{this.state.title}</h3>
+        </div>
+
+        <div id="content">
+          <h1 style={this.state.style} onClick={() => this.handleClick()}>generate</h1>
+        </div>
+        
       </div>
     )
   }

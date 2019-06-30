@@ -1,28 +1,43 @@
-html {
+body {
   background-color: rgb(25,25,25);
 }
 
-html {
-  height: 100%;
-}
-html, body, .home, #root {
-  width: 100%;
-  min-height: 100%;
-  height: 100%;
-}
-#root {
+#content {
   display: flex;
   justify-content: center;
   align-items: center;
+  height: 100vh;
+  width: 100vw;
+  position: absolute;
 }
+
 h1 {
-  display: block;
   color: white;
   letter-spacing: -2px;
-  font-size: 24px;
+  font-size: 30px;
   cursor: pointer;
   transition: 200ms;
 }
 h1:hover {
   opacity: 0.7;
+}
+
+h3 {
+  color: white;
+  padding: 25px;
+  opacity: .25;
+}
+
+#logo {
+  max-height: 10vh;
+  padding: 25px;
+  opacity: .25;
+}
+
+#nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: absolute;
+  width: 100%;
 }

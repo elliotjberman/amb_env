@@ -1,0 +1,61 @@
+{
+    "elements": [
+        {
+            "type": "chance",
+            "options": {
+                "sources": [
+                    "/samples/clap.wav"
+                ],
+                "probability": 0.5,
+                "interval": 100,
+                "volume": 0.5
+            }
+        },
+        {
+            "type": "chance",
+            "options": {
+                "sources": [
+                    "/samples/drumfill.wav"
+                ],
+                "probability": 0.5,
+                "interval": 2000,
+                "volume": 0.5
+            }
+        },
+        {
+            "type": "chance",
+            "options": {
+                "sources": [
+                    "/samples/harp.wav"
+                ],
+                "probability": 0.15,
+                "interval": 1000,
+                "volume": 0.5
+            }
+        },
+        {
+            "type": "chance",
+            "options": {
+                "sources": [
+                    "/samples/spoken_word.wav",
+                    "/samples/spoken_word_2.wav",
+                    "/samples/spoken_word_3.wav"
+                ],
+                "probability": 0.75,
+                "interval": 1000,
+                "volume": 0.5,
+                "noOverlapping": true,
+                "noRepeats": true
+            }
+        },
+        {
+            "type": "loop",
+            "options": {
+                "source": "/samples/science1.wav",
+                "probability": 1,
+                "interval": 1000,
+                "volume": 0.2
+            }
+        }
+    ]
+}

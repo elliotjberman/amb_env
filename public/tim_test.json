@@ -10,10 +10,24 @@
                     "/samples/F.wav"
                 ],
                 "probability": 1,
-                "interval": 250,
-                "volume": 0.1,
-                "isSequence": false,
-                "noRepeats": true
+                "interval": 100,
+                "volume": 0.4,
+                "isSequence": true,
+                "noRepeats": true,
+                "allowWavOverlap": true
+            }
+        },
+        {
+            "type": "chance",
+            "options": {
+                "sources": [
+                    "samples/loser.wav",
+                    "/samples/spoken_word.wav"
+                ],
+                "probability": 1,
+                "interval": 1000,
+                "volume": 0.5,
+                "allowWavOverlap": false
             }
         }
     ]

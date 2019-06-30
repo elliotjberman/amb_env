@@ -5,11 +5,6 @@ import {Howl} from 'howler';
 
 export default class ChanceAudio {
   constructor(options) {
-    this.probability = options.probability || 1;
-    this.interval = options.interval || 1000;
-    this.isSequence = options.isSequence || false;
-    this.noRepeats = options.noRepeats || false;
-    
     this.howls = options.sources.map((source) => {
       return new Howl({
         src: [source], 
@@ -17,12 +12,29 @@ export default class ChanceAudio {
       });
     });
 
+    this.probability = options.probability || 1;
+    this.interval = options.interval || 1000;
+  
+    this.isSequence = options.isSequence || false;
+    this.noRepeats = options.noRepeats || false;
+    this.allowWavOverlap = !options.allowWavOverlap || false;
+
     this.index = 0;
     this.mostRecentHowl = null;
   }
 
   activate() {
-    this.interval = setInterval(() => { this.play() }, this.interval);
+    if (this.allowWavOverlap) this.interval += this.getMaxDuration() * 1000;
+    
+    setInterval(() => { this.play() }, this.interval);
+  }
+
+  getMaxDuration() { // is this sketch
+    const durations = this.howls.map((howl) => {
+      return howl.duration();
+    });
+
+    return Math.max(...durations);
   }
 
   play() {

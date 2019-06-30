@@ -1,0 +1,33 @@
+{
+    "elements": [
+        {
+            "type": "chance",
+            "options": {
+                "sources": [
+                    "/samples/Bb.wav",
+                    "/samples/C.wav",
+                    "/samples/D.wav",
+                    "/samples/F.wav"
+                ],
+                "probability": 1,
+                "interval": 500,
+                "volume": 0,
+                "isSequence": false,
+                "noRepeats": true
+            }
+        },
+        {
+            "type": "chance",
+            "options": {
+                "sources": [
+                    "/samples/spoken_word.wav"
+                ],
+                "probability": 1,
+                "interval": 1000,
+                "volume": 0.5,
+                "noOverlapping": true,
+                "noRepeats": false
+            }
+        }
+    ]
+}

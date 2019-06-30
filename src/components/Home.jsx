@@ -11,6 +11,7 @@ export default class Home extends React.Component {
 
   async componentDidMount() {
     const config = await this.getJson(this.props.url);
+    
     this.elements = config.elements.map((element) => {
       if (element.type === "chance")
         return new ChanceAudio(element.options);

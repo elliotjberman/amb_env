@@ -3,7 +3,7 @@
     "lfos": [
         {
             "lfoName": "fastWave",
-            "rate": 2
+            "rate": 0.5
         },
         {
             "lfoName": "slowWave",
@@ -11,47 +11,6 @@
         }
     ],
     "swimmers": [
-        {
-            "parameters": {
-                "sources": [
-                    "/samples/Bb.wav",
-                    "/samples/F.wav"
-                ],
-                "volume": 0.5,
-                "interval": 300,
-                "probability": 1,
-                "noRepeats": true
-            },
-            "modMatrix": {
-                "lfoName": "fastWave",
-                "paramMods": {
-                    "volumeMod": 1,
-                    "intervalMod": 0,
-                    "probabilityMod": 0
-                }
-            } 
-        },
-        {
-            "parameters": {
-                "sources": [
-                    "/samples/C.wav",
-                    "/samples/D.wav"
-                ],
-                "volume": 0.5,
-                "interval": 300,
-                "probability": 1,
-                "noRepeats": true
-            },
-            "modMatrix": {
-                "lfoName": "fastWave",
-                "phaseFlip": true,
-                "paramMods": {
-                    "volumeMod": 1,
-                    "intervalMod": 0,
-                    "probabilityMod": 0
-                }
-            } 
-        },
         {
             "parameters": {
                 "sources": ["/samples/fade_loop_test.wav"],

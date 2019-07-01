@@ -2,7 +2,6 @@ import {Howl} from 'howler';
 
 export default class Swimmer {
   constructor(obj) {
-    console.log(obj);
     this.volume = obj.parameters.volume;
     
     this.howls = obj.parameters.sources.map((source) => {
@@ -35,7 +34,7 @@ export default class Swimmer {
   }
 
   activate() {
-    this.queueAudio(this.interval);
+    this.queueAudio(this.baseInterval); // solidify the difference between baseInterval and interval
     if (this.isLooper) this.calcLooper();
   }
 
@@ -65,21 +64,23 @@ export default class Swimmer {
     // if (this.isLooper) setInterval(() => { // SKETCH ?
     //   this.howls.forEach(howl => howl.volume(modifyParam(this.volume, this.volumeMod)));
     // }, 10);
-
-     console.log(this.intervalMod);
     
     this.interval = modifyParam(this.baseInterval, this.intervalMod); 
     this.probability = modifyParam(this.baseProbability, this.probabilityMod);
+
+    console.log(this.probability);
   }
 
   play() {
     this.lfoHandler();
 
+    this.lastIndex = this.index; // needed to move up here
+
     const goodToGo = this.noOverlapping ? !this.howls[this.lastIndex].playing() : true;
 
     if (Math.random() <= this.probability && goodToGo) {
+      this.goToNextIndex(); // this messes with the sequence tho
       this.howls[this.index].play();
-      this.goToNextIndex();
     }
   }
 
@@ -100,7 +101,7 @@ export default class Swimmer {
   }
 
   goToNextIndex() {
-    this.lastIndex = this.index;
+    
     if (this.isSequence) {
       this.incrementIndex();
       return;

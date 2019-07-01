@@ -1,0 +1,75 @@
+{
+    "title": "pond 1",
+    "lfos": [
+        {
+            "lfoName": "slowWave",
+            "rate": 30000
+        }
+    ],
+    "swimmers": [
+        {
+            "parameters": {
+                "sources": [
+                    "pond_1/samples/backdrop.wav"
+                ],
+                "volume": 0.75,
+                "isLooper": true
+            },
+            "modMatrix": {
+                "lfoName": "slowWave",
+                "paramMods": {
+                    "volumeMod": 0,
+                    "intervalMod": 0,
+                    "probabilityMod": 0
+                }
+            } 
+        },
+        {
+            "parameters": {
+                "sources": [
+                    "pond_1/samples/cluster_1.wav",
+                    "pond_1/samples/cluster_2.wav",
+                    "pond_1/samples/cluster_3.wav",
+                    "pond_1/samples/cluster_4.wav",
+                    "pond_1/samples/cluster_5.wav"
+                ],
+                "volume": 0.2,
+                "interval": 10000,
+                "probability": 0.25,
+                "noOverlapping": true
+            },
+            "modMatrix": {
+                "lfoName": "slowWave",
+                "paramMods": {
+                    "volumeMod": 0,
+                    "intervalMod": 0,
+                    "probabilityMod": 1
+                }
+            } 
+        },
+        {
+            "parameters": {
+                "sources": [
+                    "pond_1/samples/melody_1.wav",
+                    "pond_1/samples/melody_2.wav",
+                    "pond_1/samples/melody_3.wav",
+                    "pond_1/samples/melody_4.wav",
+                    "pond_1/samples/melody_5.wav",
+                    "pond_1/samples/melody_6.wav",
+                    "pond_1/samples/melody_7.wav"
+                ],
+                "volume": 0.4,
+                "interval": 500,
+                "probability": 0.3
+            },
+            "modMatrix": {
+                "lfoName": "slowWave",
+                "paramMods": {
+                    "volumeMod": 0,
+                    "intervalMod": 0,
+                    "probabilityMod": 1
+                }
+            } 
+        }
+    ]
+}

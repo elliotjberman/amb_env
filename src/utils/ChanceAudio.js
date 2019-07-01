@@ -6,6 +6,7 @@ import {Howl} from 'howler';
 export default class ChanceAudio {
   constructor(options) {
     this.volume = options.volume;
+    
     this.howls = options.sources.map((source) => {
       return new Howl({
         src: [source],
@@ -25,7 +26,8 @@ export default class ChanceAudio {
     this.lastIndex = 0;
 
     this.lfo = options.lfo;
-    // this.lfoAmount = options.lfoAmount || 1;
+    
+    this.volumeMod = options.volumeMod || 0;
   }
 
   activate() {
@@ -41,13 +43,16 @@ export default class ChanceAudio {
 
   lfoHandler() {
     let voltage =  this.phaseFlip ? 1 - this.lfo.getVoltage() : this.lfo.getVoltage();
+
+    let scaledVolume = this.volume * voltage;
+    let newVolume = this.volumeMod * scaledVolume + (1 - this.volumeMod) * this.volume;
     
-    // this.howls.forEach(howl => howl.volume(voltage));
+    this.howls.forEach(howl => howl.volume(newVolume));
     
     // let newInterval = voltage * 1000;
     // this.interval = newInterval > 40 ? newInterval : 40; // min voltage obj in the json?
 
-    this.probability = voltage;
+    // this.probability = voltage;
   }
 
   play() {

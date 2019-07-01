@@ -1,7 +1,8 @@
 import {Howl} from 'howler';
 
-export default class ChanceAudio {
+export default class Swimmer {
   constructor(obj) {
+    console.log(obj);
     this.volume = obj.parameters.volume;
     
     this.howls = obj.parameters.sources.map((source) => {
@@ -26,10 +27,11 @@ export default class ChanceAudio {
 
     this.lfo = obj.lfo;
     
-    this.volumeMod = obj.modMatrix.paramMods.volumeMod || 0;
-    this.intervalMod = obj.modMatrix.paramMods.intervalMod || 0;
-    this.probabilityMod = obj.modMatrix.paramMods.probabilityMod || 0;
-    this.phaseFlip = obj.modMatrix.phaseFlip || false;
+    this.volumeMod = obj.modMatrix ? obj.modMatrix.paramMods.volumeMod : 0;
+    this.intervalMod = obj.modMatrix ? obj.modMatrix.paramMods.intervalMod : 0;
+    this.probabilityMod = obj.modMatrix ? obj.modMatrix.paramMods.probabilityMod : 0;
+    this.phaseFlip = obj.modMatrix ? obj.modMatrix.phaseFlip : false;
+    
   }
 
   activate() {
@@ -50,17 +52,21 @@ export default class ChanceAudio {
 
   lfoHandler() {
     const modifyParam = (baseParam, modFactor) => {
-      let voltage =  this.phaseFlip ? 1 - this.lfo.getVoltage() : this.lfo.getVoltage();
+      if (this.lfo) {
+        let voltage =  this.phaseFlip ? 1 - this.lfo.getVoltage() : this.lfo.getVoltage();
 
-      let scaledParam = baseParam * voltage;
-      return modFactor * scaledParam + (1 - modFactor) * baseParam;
+        let scaledParam = baseParam * voltage;
+        return modFactor * scaledParam + (1 - modFactor) * baseParam;
+      }
     }
 
     this.howls.forEach(howl => howl.volume(modifyParam(this.volume, this.volumeMod)));
     
-    if (this.isLooper) setInterval(() => {
-      this.howls.forEach(howl => howl.volume(modifyParam(this.volume, this.volumeMod)));
-    }, 10);
+    // if (this.isLooper) setInterval(() => { // SKETCH ?
+    //   this.howls.forEach(howl => howl.volume(modifyParam(this.volume, this.volumeMod)));
+    // }, 10);
+
+     console.log(this.intervalMod);
     
     this.interval = modifyParam(this.baseInterval, this.intervalMod); 
     this.probability = modifyParam(this.baseProbability, this.probabilityMod);

@@ -1,6 +1,5 @@
 import React from 'react';
-import AudioObject from '../utils/AudioObject';
-import ChanceAudio from '../utils/ChanceAudio';
+import Swimmer from '../utils/Swimmer';
 import LFO from '../utils/LFO';
 import axios from 'axios';
 
@@ -11,8 +10,6 @@ export default class Home extends React.Component {
   }
 
   async componentDidMount() {
-    this.lfo = new LFO('tikka', 1);
-    
     const config = await this.getJson(this.props.url); 
     this.setState({title: config.title});
 
@@ -20,25 +17,23 @@ export default class Home extends React.Component {
       return new LFO(lfo.lfoName, lfo.rate);
     });
 
-    this.elements = config.elements.map((element) => {
+    this.swimmers = config.swimmers.map((swimmer) => {
       let chosenLfo;
-
       for (let i = 0; i < allLfos.length; i++) {
-        if (allLfos[i].name === element.modMatrix.lfoName) {
-          chosenLfo = allLfos[i];
+        if (swimmer.modMatrix) {
+          if (allLfos[i].name === swimmer.modMatrix.lfoName) {
+            chosenLfo = allLfos[i];
+          }
         }
       }
 
       const props = {
-        parameters: element.parameters, 
-        modMatrix: element.modMatrix, 
-        lfo: chosenLfo
+        parameters: swimmer.parameters, 
+        modMatrix: swimmer.modMatrix ? swimmer.modMatrix : null, 
+        lfo: chosenLfo ? chosenLfo : null
       }
       
-      if (element.type === "chance")
-        return new ChanceAudio(props);
-      if (element.type === "loop")
-        return new AudioObject(props);
+      return new Swimmer(props);
     });
   }
 
@@ -48,7 +43,7 @@ export default class Home extends React.Component {
   }
 
   handleClick() {
-      this.elements.forEach(el => el.activate());
+      this.swimmers.forEach(el => el.activate());
       this.setState({style: {color: "#db3236"}});
   }
 

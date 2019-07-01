@@ -10,17 +10,17 @@
             "rate": 0.25
         }
     ],
-    "elements": [
+    "swimmers": [
         {
-            "type": "chance",
             "parameters": {
                 "sources": [
                     "/samples/Bb.wav",
                     "/samples/F.wav"
                 ],
-                "volume": 1,
+                "volume": 0.5,
                 "interval": 300,
-                "probability": 1
+                "probability": 1,
+                "noRepeats": true
             },
             "modMatrix": {
                 "lfoName": "fastWave",
@@ -32,15 +32,15 @@
             } 
         },
         {
-            "type": "chance",
             "parameters": {
                 "sources": [
                     "/samples/C.wav",
                     "/samples/D.wav"
                 ],
-                "volume": 1,
+                "volume": 0.5,
                 "interval": 300,
-                "probability": 1
+                "probability": 1,
+                "noRepeats": true
             },
             "modMatrix": {
                 "lfoName": "fastWave",
@@ -53,20 +53,20 @@
             } 
         },
         {
-            "type": "chance",
             "parameters": {
                 "sources": ["/samples/fade_loop_test.wav"],
-                "isLooper": true,
-                "volume": 0
+                "volume": 1,
+                "isLooper": true
             },
             "modMatrix": {
-                "lfoName": "slowWave",
+                "lfoName": "fastWave",
+                "phaseFlip": true,
                 "paramMods": {
-                    "volumeMod": 1,
+                    "volumeMod": 0,
                     "intervalMod": 0,
                     "probabilityMod": 0
                 }
-            }
+            } 
         }
     ]
 }

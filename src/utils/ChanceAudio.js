@@ -19,6 +19,7 @@ export default class ChanceAudio {
     this.isSequence = options.isSequence || false;
     this.noRepeats = options.noRepeats || false;
     this.noOverlapping = options.noOverlapping || false;
+    this.phaseFlip = options.phaseFlip || false;
 
     this.index = 0;
     this.lastIndex = 0;
@@ -27,39 +28,33 @@ export default class ChanceAudio {
     // this.lfoAmount = options.lfoAmount || 1;
   }
 
-  playAudio(x) {
-    console.log(x);
-    console.log(this.interval);
+  activate() {
+    this.queueAudio(this.interval);
+  }
+
+  queueAudio(interval) {
     setTimeout(() => { 
       this.play();
-      this.playAudio(this.interval);
-    }, x) 
+      this.queueAudio(this.interval);
+    }, interval);
   }
 
-  activate() {
-    // setInterval(() => { this.play() }, this.interval);
-    this.playAudio(this.interval);
-  }
-
-  lfoClock() {
-    // this.howls.forEach((howl) => {
-    //   console.log(this.interval);
-    //   howl.volume(this.lfo.getVoltage());
-    // });
-    // setInterval(() => { this.howls[0].volume(this.lfo.getVoltage())}, 10);
-    // setInterval(() => { this.probability = this.lfo.getVoltage();}, 10);
+  lfoHandler() {
+    let voltage =  this.phaseFlip ? 1 - this.lfo.getVoltage() : this.lfo.getVoltage();
     
-      let voltage = this.lfo.getVoltage() * 1000;
-      this.interval = voltage > 40 ? voltage : 40; // min voltage obj in the json?
-      
-      
-    // }, 100);
+    // this.howls.forEach(howl => howl.volume(voltage));
+    
+    // let newInterval = voltage * 1000;
+    // this.interval = newInterval > 40 ? newInterval : 40; // min voltage obj in the json?
+
+    this.probability = voltage;
   }
 
   play() {
-    this.lfoClock();
+    this.lfoHandler();
 
     const goodToGo = this.noOverlapping ? !this.howls[this.lastIndex].playing() : true;
+
     if (Math.random() <= this.probability && goodToGo) {
       this.howls[this.index].play();
       this.goToNextIndex();

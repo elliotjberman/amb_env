@@ -4,6 +4,6 @@ export default class LFO {
   }
 
   getVoltage() {
-    return (Math.sin(Date.now()/1000 * this.frequency) + 1)/2;
+    return (Math.sin(Date.now()/1000 * this.frequency) + 1) / 2;
   }
 }

@@ -6,15 +6,28 @@
             "options": {
                 "sources": [
                     "/samples/Bb.wav",
-                    "/samples/C.wav",
-                    "/samples/D.wav",
                     "/samples/F.wav"
                 ],
                 "probability": 1,
-                "interval": 100,
+                "interval": 200,
                 "volume": 0.5,
                 "isSequence": false,
                 "noRepeats": true
+            }
+        },
+        {
+            "type": "chance",
+            "options": {
+                "sources": [
+                    "/samples/C.wav",
+                    "/samples/D.wav"
+                ],
+                "probability": 1,
+                "interval": 200,
+                "volume": 0.5,
+                "isSequence": false,
+                "noRepeats": true,
+                "phaseFlip": true
             }
         }
     ]

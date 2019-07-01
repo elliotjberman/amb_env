@@ -11,15 +11,28 @@ export default class Home extends React.Component {
   }
 
   async componentDidMount() {
-    this.lfo = new LFO(1);
+    this.lfo = new LFO('tikka', 1);
+    
     const config = await this.getJson(this.props.url); 
     this.setState({title: config.title});
 
+    let allLfos = config.lfos.map((lfo) => {
+      return new LFO(lfo.lfoName, lfo.rate);
+    });
+
     this.elements = config.elements.map((element) => {
+      let chosenLfo;
+
+      for (let i = 0; i < allLfos.length; i++) {
+        if (allLfos[i].name === element.modMatrix.lfoName) {
+          chosenLfo = allLfos[i];
+        }
+      }
+
       const props = {
         parameters: element.parameters, 
         modMatrix: element.modMatrix, 
-        lfo: this.lfo
+        lfo: chosenLfo
       }
       
       if (element.type === "chance")

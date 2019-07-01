@@ -1,9 +1,10 @@
 export default class LFO {
-  constructor(frequency) {
-    this.frequency = frequency;
+  constructor(name, rate) {
+    this.name = name;
+    this.rate = rate;
   }
 
   getVoltage() {
-    return (Math.sin(Date.now()/1000 * this.frequency) + 1) / 2;
+    return (Math.sin(Date.now()/1000 * this.rate) + 1) / 2;
   }
 }

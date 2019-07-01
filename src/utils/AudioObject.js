@@ -5,8 +5,7 @@ export default class AudioObject {
     const howlerProps = {
       src: [options.source],
       volume: options.volume || 1,
-      loop: true,
-      autoplay: false
+      loop: true
     }
     this.audio = new Howl(howlerProps);
   }

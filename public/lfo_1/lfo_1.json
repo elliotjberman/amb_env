@@ -1,5 +1,15 @@
 {
     "title": "lfo test 1",
+    "lfos": [
+        {
+            "lfoName": "fastWave",
+            "rate": 2
+        },
+        {
+            "lfoName": "slowWave",
+            "rate": 0.25
+        }
+    ],
     "elements": [
         {
             "type": "chance",
@@ -8,14 +18,54 @@
                     "/samples/Bb.wav",
                     "/samples/F.wav"
                 ],
-                "volume": 0.5,
+                "volume": 1,
                 "interval": 300,
                 "probability": 1
             },
             "modMatrix": {
-                "volumeMod": 0,
-                "intervalMod": 0,
-                "probabilityMod": 1
+                "lfoName": "fastWave",
+                "paramMods": {
+                    "volumeMod": 1,
+                    "intervalMod": 0,
+                    "probabilityMod": 0
+                }
+            } 
+        },
+        {
+            "type": "chance",
+            "parameters": {
+                "sources": [
+                    "/samples/C.wav",
+                    "/samples/D.wav"
+                ],
+                "volume": 1,
+                "interval": 300,
+                "probability": 1
+            },
+            "modMatrix": {
+                "lfoName": "fastWave",
+                "phaseFlip": true,
+                "paramMods": {
+                    "volumeMod": 1,
+                    "intervalMod": 0,
+                    "probabilityMod": 0
+                }
+            } 
+        },
+        {
+            "type": "chance",
+            "parameters": {
+                "sources": ["/samples/fade_loop_test.wav"],
+                "isLooper": true,
+                "volume": 0
+            },
+            "modMatrix": {
+                "lfoName": "slowWave",
+                "paramMods": {
+                    "volumeMod": 1,
+                    "intervalMod": 0,
+                    "probabilityMod": 0
+                }
             }
         }
     ]

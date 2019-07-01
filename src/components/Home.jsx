@@ -1,6 +1,7 @@
 import React from 'react';
 import AudioObject from '../utils/AudioObject';
 import ChanceAudio from '../utils/ChanceAudio';
+import LFO from '../utils/LFO';
 import axios from 'axios';
 
 export default class Home extends React.Component {
@@ -10,14 +11,16 @@ export default class Home extends React.Component {
   }
 
   async componentDidMount() {
+    this.lfo = new LFO(1);
     const config = await this.getJson(this.props.url);
     this.setState({title: config.title});
-    
+
     this.elements = config.elements.map((element) => {
+      const props = {...element.options, lfo: this.lfo}
       if (element.type === "chance")
-        return new ChanceAudio(element.options);
+        return new ChanceAudio(props);
       if (element.type === "loop")
-        return new AudioObject(element.options);
+        return new AudioObject(props);
     });
   }
 
@@ -43,7 +46,7 @@ export default class Home extends React.Component {
         <div id="content">
           <h1 style={this.state.style} onClick={() => this.handleClick()}>generate</h1>
         </div>
-        
+
       </div>
     )
   }

@@ -1,25 +1,27 @@
 import {Howl} from 'howler';
 
-// TODO: Condense all audio down into this
-
 export default class ChanceAudio {
   constructor(options) {
+    this.volume = options.volume;
     this.howls = options.sources.map((source) => {
       return new Howl({
-        src: [source], 
-        volume: options.volume
+        src: [source],
+        volume: this.volume
       });
     });
 
     this.probability = options.probability || 1;
     this.interval = options.interval || 1000;
-  
+
     this.isSequence = options.isSequence || false;
     this.noRepeats = options.noRepeats || false;
     this.noOverlapping = options.noOverlapping || false;
 
     this.index = 0;
     this.lastIndex = 0;
+
+    this.lfo = options.lfo;
+    this.lfoAmount = options.lfoAmount || 1;
   }
 
   activate() {
@@ -34,7 +36,15 @@ export default class ChanceAudio {
     return Math.max(...durations);
   }
 
+  applyLFO() {
+    if (this.lfo) {
+      this.howls.forEach(howl => { howl.volume = this.lfo.getVoltage() * this.lfoAmount * this.volume } )
+    }
+  }
+
   play() {
+    this.applyLFO();
+
     const goodToGo = this.noOverlapping ? !this.howls[this.lastIndex].playing() : true;
     if (Math.random() <= this.probability && goodToGo) {
       this.howls[this.index].play();

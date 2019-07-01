@@ -3,15 +3,19 @@
     "elements": [
         {
             "type": "chance",
-            "options": {
+            "parameters": {
                 "sources": [
                     "/samples/Bb.wav",
                     "/samples/F.wav"
                 ],
                 "volume": 0.5,
-                "interval": 200,
-                "probability": 1,
-                "volumeMod": 0.5
+                "interval": 300,
+                "probability": 1
+            },
+            "modMatrix": {
+                "volumeMod": 0,
+                "intervalMod": 0,
+                "probabilityMod": 1
             }
         }
     ]

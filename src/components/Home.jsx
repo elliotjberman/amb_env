@@ -11,12 +11,17 @@ export default class Home extends React.Component {
   }
 
   async componentDidMount() {
-    this.lfo = new LFO(2);
+    this.lfo = new LFO(1);
     const config = await this.getJson(this.props.url); 
     this.setState({title: config.title});
 
     this.elements = config.elements.map((element) => {
-      const props = {...element.options, lfo: this.lfo}
+      const props = {
+        parameters: element.parameters, 
+        modMatrix: element.modMatrix, 
+        lfo: this.lfo
+      }
+      
       if (element.type === "chance")
         return new ChanceAudio(props);
       if (element.type === "loop")

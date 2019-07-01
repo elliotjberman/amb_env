@@ -1,33 +1,32 @@
 import {Howl} from 'howler';
 
-// TODO: lfo points in, for a tighter clock, make method on audio object class, apply lfo value, and it knows what value to route it to
-// takes in lfo value, and knows what to do with that
-
 export default class ChanceAudio {
-  constructor(options) {
-    this.volume = options.volume;
+  constructor(obj) {
+    this.volume = obj.parameters.volume;
     
-    this.howls = options.sources.map((source) => {
+    this.howls = obj.parameters.sources.map((source) => {
       return new Howl({
         src: [source],
         volume: this.volume
       });
     });
 
-    this.probability = options.probability || 1;
-    this.interval = options.interval || 1000;
-
-    this.isSequence = options.isSequence || false;
-    this.noRepeats = options.noRepeats || false;
-    this.noOverlapping = options.noOverlapping || false;
-    this.phaseFlip = options.phaseFlip || false;
+    this.baseInterval = obj.parameters.interval || 1000;
+    this.baseProbability = obj.parameters.probability || 1;
+    
+    this.isSequence = obj.parameters.isSequence || false;
+    this.noRepeats = obj.parameters.noRepeats || false;
+    this.noOverlapping = obj.parameters.noOverlapping || false; 
+    this.phaseFlip = obj.parameters.phaseFlip || false;
 
     this.index = 0;
     this.lastIndex = 0;
 
-    this.lfo = options.lfo;
+    this.lfo = obj.lfo;
     
-    this.volumeMod = options.volumeMod || 0;
+    this.volumeMod = obj.modMatrix.volumeMod || 0;
+    this.intervalMod = obj.modMatrix.intervalMod || 0;
+    this.probabilityMod = obj.modMatrix.probabilityMod || 0;
   }
 
   activate() {
@@ -42,17 +41,16 @@ export default class ChanceAudio {
   }
 
   lfoHandler() {
-    let voltage =  this.phaseFlip ? 1 - this.lfo.getVoltage() : this.lfo.getVoltage();
+    const modifyParam = (baseParam, modFactor) => {
+      let voltage =  this.phaseFlip ? 1 - this.lfo.getVoltage() : this.lfo.getVoltage();
 
-    let scaledVolume = this.volume * voltage;
-    let newVolume = this.volumeMod * scaledVolume + (1 - this.volumeMod) * this.volume;
-    
-    this.howls.forEach(howl => howl.volume(newVolume));
-    
-    // let newInterval = voltage * 1000;
-    // this.interval = newInterval > 40 ? newInterval : 40; // min voltage obj in the json?
+      let scaledParam = baseParam * voltage;
+      return modFactor * scaledParam + (1 - modFactor) * baseParam;
+    }
 
-    // this.probability = voltage;
+    this.howls.forEach(howl => howl.volume(modifyParam(this.volume, this.volumeMod)));
+    this.interval = modifyParam(this.baseInterval, this.intervalMod); 
+    this.probability = modifyParam(this.baseProbability, this.probabilityMod);
   }
 
   play() {

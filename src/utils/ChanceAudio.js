@@ -1,5 +1,8 @@
 import {Howl} from 'howler';
 
+// TODO: lfo points in, for a tighter clock, make method on audio object class, apply lfo value, and it knows what value to route it to
+// takes in lfo value, and knows what to do with that
+
 export default class ChanceAudio {
   constructor(options) {
     this.volume = options.volume;
@@ -21,29 +24,40 @@ export default class ChanceAudio {
     this.lastIndex = 0;
 
     this.lfo = options.lfo;
-    this.lfoAmount = options.lfoAmount || 1;
+    // this.lfoAmount = options.lfoAmount || 1;
+  }
+
+  playAudio(x) {
+    console.log(x);
+    console.log(this.interval);
+    setTimeout(() => { 
+      this.play();
+      this.playAudio(this.interval);
+    }, x) 
   }
 
   activate() {
-    setInterval(() => { this.play() }, this.interval);
+    // setInterval(() => { this.play() }, this.interval);
+    this.playAudio(this.interval);
   }
 
-  getMaxDuration() { // is this sketch
-    const durations = this.howls.map((howl) => {
-      return howl.duration();
-    });
-
-    return Math.max(...durations);
-  }
-
-  applyLFO() {
-    if (this.lfo) {
-      this.howls.forEach(howl => { howl.volume = this.lfo.getVoltage() * this.lfoAmount * this.volume } )
-    }
+  lfoClock() {
+    // this.howls.forEach((howl) => {
+    //   console.log(this.interval);
+    //   howl.volume(this.lfo.getVoltage());
+    // });
+    // setInterval(() => { this.howls[0].volume(this.lfo.getVoltage())}, 10);
+    // setInterval(() => { this.probability = this.lfo.getVoltage();}, 10);
+    
+      let voltage = this.lfo.getVoltage() * 1000;
+      this.interval = voltage > 40 ? voltage : 40; // min voltage obj in the json?
+      
+      
+    // }, 100);
   }
 
   play() {
-    this.applyLFO();
+    this.lfoClock();
 
     const goodToGo = this.noOverlapping ? !this.howls[this.lastIndex].playing() : true;
     if (Math.random() <= this.probability && goodToGo) {

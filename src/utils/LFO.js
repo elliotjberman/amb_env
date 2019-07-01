@@ -1,5 +1,5 @@
 export default class LFO {
-  constructor(frequency, shape) {
+  constructor(frequency) {
     this.frequency = frequency;
   }
 

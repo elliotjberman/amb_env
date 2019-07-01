@@ -1,0 +1,21 @@
+{
+    "title": "lfo test 1",
+    "elements": [
+        {
+            "type": "chance",
+            "options": {
+                "sources": [
+                    "/samples/Bb.wav",
+                    "/samples/C.wav",
+                    "/samples/D.wav",
+                    "/samples/F.wav"
+                ],
+                "probability": 1,
+                "interval": 100,
+                "volume": 0.5,
+                "isSequence": false,
+                "noRepeats": true
+            }
+        }
+    ]
+}

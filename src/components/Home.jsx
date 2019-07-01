@@ -11,8 +11,8 @@ export default class Home extends React.Component {
   }
 
   async componentDidMount() {
-    this.lfo = new LFO(1);
-    const config = await this.getJson(this.props.url);
+    this.lfo = new LFO(2);
+    const config = await this.getJson(this.props.url); 
     this.setState({title: config.title});
 
     this.elements = config.elements.map((element) => {

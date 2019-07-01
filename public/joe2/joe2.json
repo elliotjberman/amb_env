@@ -1,0 +1,104 @@
+{
+    "title": "joe 2",
+    "elements": [
+        {
+            "type": "loop",
+            "options": {
+                "source": "/joe2/samples/prophet_loop.wav",
+                "volume": 0.5
+            }
+        },
+        {
+            "type": "chance",
+            "options": {
+                "sources": [
+                  "/joe2/samples/poke_1.wav",
+                  "/joe2/samples/poke_2.wav",
+                  "/joe2/samples/poke_3.wav",
+                  "/joe2/samples/poke_4.wav",
+                  "/joe2/samples/poke_5.wav",
+                  "/joe2/samples/poke_6.wav",
+                  "/joe2/samples/poke_7.wav",
+                  "/joe2/samples/poke_8.wav",
+                  "/joe2/samples/poke_9.wav",
+                  "/joe2/samples/poke_10.wav",
+                  "/joe2/samples/poke_11.wav",
+                  "/joe2/samples/poke_12.wav",
+                  "/joe2/samples/poke_13.wav",
+                  "/joe2/samples/poke_14.wav",
+                  "/joe2/samples/poke_15.wav",
+                  "/joe2/samples/poke_16.wav"
+                ],
+                "probability": 0.01, 
+                "interval": 200,
+                "volume": 0.3
+            }
+        },
+        {
+            "type": "chance",
+            "options": {
+                "sources": [
+                  "/joe2/samples/poke_1.wav",
+                  "/joe2/samples/poke_2.wav",
+                  "/joe2/samples/poke_3.wav",
+                  "/joe2/samples/poke_4.wav",
+                  "/joe2/samples/poke_5.wav",
+                  "/joe2/samples/poke_6.wav",
+                  "/joe2/samples/poke_7.wav",
+                  "/joe2/samples/poke_8.wav",
+                  "/joe2/samples/poke_9.wav",
+                  "/joe2/samples/poke_10.wav",
+                  "/joe2/samples/poke_11.wav",
+                  "/joe2/samples/poke_12.wav",
+                  "/joe2/samples/poke_13.wav",
+                  "/joe2/samples/poke_14.wav",
+                  "/joe2/samples/poke_15.wav",
+                  "/joe2/samples/poke_16.wav"
+                ],
+                "probability": 0.05, 
+                "interval": 200,
+                "volume": 0.3
+            }
+        },
+        {
+            "type": "chance",
+            "options": {
+                "sources": [
+                  "/joe2/samples/flopper_1.wav",
+                  "/joe2/samples/flopper_2.wav",
+                  "/joe2/samples/flopper_3.wav",
+                  "/joe2/samples/flopper_4.wav"
+                ],
+                "probability": 0.25,
+                "interval": 5000,
+                "volume": 0.6
+            }
+        },
+        {
+            "type": "chance",
+            "options": {
+                "sources": [
+                  "/joe2/samples/losweep_1.wav",
+                  "/joe2/samples/losweep_2.wav"
+                ],
+                "probability": 0.8,
+                "interval": 10000,
+                "volume": 0.3
+            }
+        },
+        {
+            "type": "chance",
+            "options": {
+                "sources": [
+                  "/joe2/samples/drums_1.wav",
+                  "/joe2/samples/drums_2.wav",
+                  "/joe2/samples/drums_3.wav",
+                  "/joe2/samples/drums_4.wav"
+                ],
+                "probability": 0.7,
+                "interval": 9000,
+                "volume": 0.6
+            }
+        }
+    ]
+}

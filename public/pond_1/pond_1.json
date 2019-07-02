@@ -20,14 +20,16 @@
                 ],
                 "volume": 0.75,
                 "probability": 1,
-                "overlapAmount": 25000
+                "overlapAmount": 25000,
+                "stereo": 0
             },
             "modMatrix": {
                 "lfoName": "slowWave",
                 "paramMods": {
                     "volumeMod": 0,
                     "intervalMod": 0,
-                    "probabilityMod": 0
+                    "probabilityMod": 0,
+                    "stereoMod": 0
                 }
             } 
         },
@@ -42,14 +44,16 @@
                 ],
                 "volume": 0.2,
                 "interval": 10000,
-                "probability": 0.25
+                "probability": 0.25,
+                "stereo": 0
             },
             "modMatrix": {
                 "lfoName": "slowWave",
                 "paramMods": {
                     "volumeMod": 0,
                     "intervalMod": 0,
-                    "probabilityMod": 1
+                    "probabilityMod": 1,
+                    "stereoMod": 0
                 }
             } 
         },
@@ -66,14 +70,16 @@
                 ],
                 "volume": 0.4,
                 "interval": 500,
-                "probability": 0.15
+                "probability": 0.15,
+                "stereo": 1
             },
             "modMatrix": {
                 "lfoName": "mediumWave",
                 "paramMods": {
                     "volumeMod": 0,
                     "intervalMod": 0,
-                    "probabilityMod": 1
+                    "probabilityMod": 1,
+                    "stereoMod": 0
                 }
             } 
         }

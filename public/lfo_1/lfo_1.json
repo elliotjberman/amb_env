@@ -2,28 +2,50 @@
     "title": "lfo test 1",
     "lfos": [
         {
-            "lfoName": "fastWave",
-            "rate": 0.5
+            "lfoName": "sq1",
+            "shape": "square",
+            "rate": 5000
         },
         {
-            "lfoName": "slowWave",
-            "rate": 0.25
+            "lfoName": "sq2",
+            "shape": "sin",
+            "rate": 0.5
         }
     ],
     "swimmers": [
         {
             "parameters": {
-                "sources": ["/samples/fade_loop_test.wav"],
+                "sources": [
+                    "/samples/Bb.wav"
+                ],
                 "volume": 1,
-                "isLooper": true
+                "interval": 1000,
+                "probability": 1
             },
             "modMatrix": {
-                "lfoName": "fastWave",
-                "phaseFlip": true,
+                "lfoName": "sq1",
                 "paramMods": {
                     "volumeMod": 0,
                     "intervalMod": 0,
-                    "probabilityMod": 0
+                    "probabilityMod": 1
+                }
+            } 
+        },
+        {
+            "parameters": {
+                "sources": [
+                    "/samples/F.wav"
+                ],
+                "volume": 1,
+                "interval": 250,
+                "probability": 1
+            },
+            "modMatrix": {
+                "lfoName": "sq2",
+                "paramMods": {
+                    "volumeMod": 0,
+                    "intervalMod": 0,
+                    "probabilityMod": 1
                 }
             } 
         }

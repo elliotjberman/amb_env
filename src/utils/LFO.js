@@ -2,23 +2,16 @@ export default class LFO {
   constructor(name, rate, shape) {
     this.name = name;
     this.rate = rate;
+    this.shape = shape;
 
-    this.on = false;
-
-    console.log(this.rate);
-
+    // some real nice jank here boyz, the "coffin square wav"
+    this.on = false; 
     setInterval(() => {this.on  = !this.on}, this.rate);
   }
 
   getVoltage() {
-    return Number(this.on);
+    if (this.shape === 'sin') return (Math.sin(Date.now()/1000 * this.rate) + 1) / 2;
 
-    // return (Math.sin(Date.now()/1000 * this.rate) + 1) / 2;
-    // console.log(Math.round((Math.sin(Date.now()/1000 * this.rate) + 1) / 2));
-    // console.log(1 - Math.round((Math.sin(Date.now()/1000 * this.rate) + 1) / 2));
-
-
-
-    
+    if (this.shape === 'square') return Number(this.on); 
   }
 }

@@ -30,7 +30,6 @@ export default class Swimmer {
     this.intervalMod = obj.modMatrix ? obj.modMatrix.paramMods.intervalMod : 0;
     this.probabilityMod = obj.modMatrix ? obj.modMatrix.paramMods.probabilityMod : 0;
     this.phaseFlip = obj.modMatrix ? obj.modMatrix.phaseFlip : false;
-    
   }
 
   activate() {
@@ -39,7 +38,8 @@ export default class Swimmer {
   }
 
   calcLooper() {
-    this.baseInterval = (this.howls[0].duration() * 1000) - 500;
+    let overlapAmount = 500;
+    this.baseInterval = (this.howls[0].duration() * 1000) - overlapAmount; // make this take in the overall length and calc an overlap percentage
   }
 
   queueAudio(interval) {
@@ -50,10 +50,10 @@ export default class Swimmer {
   }
 
   lfoHandler() {
+    let voltage =  this.phaseFlip ? 1 - this.lfo.getVoltage() : this.lfo.getVoltage();
+    
     const modifyParam = (baseParam, modFactor) => {
       if (this.lfo) {
-        let voltage =  this.phaseFlip ? 1 - this.lfo.getVoltage() : this.lfo.getVoltage();
-
         let scaledParam = baseParam * voltage;
         return modFactor * scaledParam + (1 - modFactor) * baseParam;
       }
@@ -67,8 +67,6 @@ export default class Swimmer {
     
     this.interval = modifyParam(this.baseInterval, this.intervalMod); 
     this.probability = modifyParam(this.baseProbability, this.probabilityMod);
-
-    console.log(this.probability);
   }
 
   play() {

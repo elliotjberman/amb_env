@@ -14,7 +14,7 @@ export default class Home extends React.Component {
     this.setState({title: config.title});
 
     let allLfos = config.lfos.map((lfo) => {
-      return new LFO(lfo.lfoName, lfo.rate);
+      return new LFO(lfo.lfoName, lfo.rate, lfo.shape);
     });
 
     this.swimmers = config.swimmers.map((swimmer) => {
@@ -52,7 +52,7 @@ export default class Home extends React.Component {
       <div>
 
         <div id="nav">
-          <img id="logo" src="logo.png" />
+          <img id="logo" src="logo.png" alt=""/>
           <h3>{this.state.title}</h3>
         </div>
 

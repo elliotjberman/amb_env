@@ -3,7 +3,13 @@
     "lfos": [
         {
             "lfoName": "slowWave",
-            "rate": 30000
+            "rate": 30000,
+            "shape": "square"
+        },
+        {
+            "lfoName": "mediumWave",
+            "rate": 25000,
+            "shape": "square"
         }
     ],
     "swimmers": [
@@ -58,12 +64,12 @@
                     "pond_1/samples/melody_6.wav",
                     "pond_1/samples/melody_7.wav"
                 ],
-                "volume": 0.4,
+                "volume": 0.2,
                 "interval": 500,
-                "probability": 0.3
+                "probability": 0.15
             },
             "modMatrix": {
-                "lfoName": "slowWave",
+                "lfoName": "mediumWave",
                 "paramMods": {
                     "volumeMod": 0,
                     "intervalMod": 0,

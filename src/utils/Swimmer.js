@@ -2,27 +2,29 @@ import {Howl} from 'howler';
 
 export default class Swimmer {
   constructor(obj) {
-    this.volume = obj.parameters.volume;
+
+    this.baseInterval = obj.parameters.interval;
+    this.interval = this.baseInterval;
+
+    this.baseProbability = obj.parameters.probability || 1;
+    this.probability = this.baseProbability;
+
+    this.baseVolume = obj.parameters.volume;
+    this.volume = this.baseVolume;
     
     this.howls = obj.parameters.sources.map((source) => {
       return new Howl({
         src: [source],
-        volume: this.volume
+        volume: this.baseVolume
       });
     });
 
-    this.baseInterval = obj.parameters.interval || 1000;
-    this.baseProbability = obj.parameters.probability || 1;
-    
     this.isSequence = obj.parameters.isSequence || false;
     this.noRepeats = obj.parameters.noRepeats || false;
-    this.noOverlapping = obj.parameters.noOverlapping || false; 
+    this.overlapAmount = obj.parameters.overlapAmount || 0;
     
-
     this.index = 0;
     this.lastIndex = 0;
-
-    this.isLooper = obj.parameters.isLooper;
 
     this.lfo = obj.lfo;
     
@@ -34,17 +36,16 @@ export default class Swimmer {
 
   activate() {
     this.queueAudio(this.baseInterval); // solidify the difference between baseInterval and interval
-    if (this.isLooper) this.calcLooper();
+    if (!this.baseInterval) this.calcInterval();
   }
 
-  calcLooper() {
-    let overlapAmount = 500;
-    this.baseInterval = (this.howls[0].duration() * 1000) - overlapAmount; // make this take in the overall length and calc an overlap percentage
+  calcInterval() {
+    this.baseInterval = (this.howls[0].duration() * 1000) - this.overlapAmount; // make this take in the overall length and calc an overlap percentage
   }
 
   queueAudio(interval) {
     setTimeout(() => { 
-      this.play();
+      this.playSound();
       this.queueAudio(this.interval);
     }, interval);
   }
@@ -60,23 +61,18 @@ export default class Swimmer {
     }
 
     this.howls.forEach(howl => howl.volume(modifyParam(this.volume, this.volumeMod)));
-    
-    // if (this.isLooper) setInterval(() => { // SKETCH ?
-    //   this.howls.forEach(howl => howl.volume(modifyParam(this.volume, this.volumeMod)));
-    // }, 10);
-    
     this.interval = modifyParam(this.baseInterval, this.intervalMod); 
     this.probability = modifyParam(this.baseProbability, this.probabilityMod);
   }
 
-  play() {
+  playSound() {
     this.lfoHandler();
 
     this.lastIndex = this.index; // needed to move up here
 
-    const goodToGo = this.noOverlapping ? !this.howls[this.lastIndex].playing() : true;
+    console.log(this.probability);
 
-    if (Math.random() <= this.probability && goodToGo) {
+    if (Math.random() <= this.probability) {  
       this.goToNextIndex(); // this messes with the sequence tho
       this.howls[this.index].play();
     }

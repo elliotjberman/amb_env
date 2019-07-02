@@ -2,46 +2,64 @@
     "title": "lfo test 1",
     "lfos": [
         {
-            "lfoName": "sq1",
+            "lfoName": "wave",
             "shape": "square",
             "rate": 5000
-        },
-        {
-            "lfoName": "sq2",
-            "shape": "sin",
-            "rate": 0.5
         }
     ],
     "swimmers": [
         {
             "parameters": {
                 "sources": [
-                    "/samples/Bb.wav"
+                    "/lfo_1/samples/bg_1.wav",
+                    "/lfo_1/samples/bg_2.wav",
+                    "/lfo_1/samples/bg_3.wav"
                 ],
                 "volume": 1,
-                "interval": 1000,
-                "probability": 1
+                "probability": 1,
+                "overlapAmount": 1000
             },
             "modMatrix": {
-                "lfoName": "sq1",
+                "lfoName": "wave",
                 "paramMods": {
                     "volumeMod": 0,
                     "intervalMod": 0,
-                    "probabilityMod": 1
+                    "probabilityMod": 0
                 }
             } 
         },
         {
             "parameters": {
                 "sources": [
-                    "/samples/F.wav"
+                    "/lfo_1/samples/bg_bass_1.wav",
+                    "/lfo_1/samples/bg_bass_2.wav"
                 ],
-                "volume": 1,
-                "interval": 250,
-                "probability": 1
+                "volume": 0.15,
+                "probability": 1,
+                "overlapAmount": 0
             },
             "modMatrix": {
-                "lfoName": "sq2",
+                "lfoName": "wave",
+                "paramMods": {
+                    "volumeMod": 0,
+                    "intervalMod": 0,
+                    "probabilityMod": 0
+                }
+            } 
+        },
+        {
+            "parameters": {
+                "sources": [
+                    "/lfo_1/samples/D.wav",
+                    "/lfo_1/samples/C.wav",
+                    "/lfo_1/samples/F.wav"
+                ],
+                "volume": 0.4,
+                "interval": 100,
+                "probability": 0.2
+            },
+            "modMatrix": {
+                "lfoName": "wave",
                 "paramMods": {
                     "volumeMod": 0,
                     "intervalMod": 0,

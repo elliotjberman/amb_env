@@ -61,9 +61,9 @@ export default class Swimmer {
     for (let i = 0; i < this.lfos.length; i++) {
       this.lfos[i].startTime = Date.now();
     }
-    
-    this.queueAudio(this.baseInterval); // solidify the difference between baseInterval and interval
+
     if (!this.baseInterval) this.calcInterval();
+    this.queueAudio(this.baseInterval); // solidify the difference between baseInterval and interval
   }
 
   calcInterval() {
@@ -98,14 +98,16 @@ export default class Swimmer {
     this.interval = modifyParam(this.baseInterval, this.intervalModAmount, this.intervalModLfo); 
     this.probability = modifyParam(this.baseProbability, this.probabilityModAmount, this.probabilityModLfo);
     
-    setInterval(() => { 
-      this.howls.forEach(howl => howl.stereo(modifyParam(this.baseStereo, this.stereoModAmount, this.stereoModLfo, true)));
-    }, 5);
+    // setInterval(() => { 
+    //   this.howls.forEach(howl => howl.stereo(modifyParam(this.baseStereo, this.stereoModAmount, this.stereoModLfo, true)));
+    // }, 5);
 
   }
 
   playSound() {
     this.lfoHandler();
+
+    console.log('playing sound...');
 
     this.lastIndex = this.index; // needed to move up here
 

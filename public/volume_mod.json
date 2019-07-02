@@ -2,30 +2,55 @@
     "title": "volume mod test",
     "lfos": [
         {
-            "lfoName": "volTest",
+            "lfoName": "gate",
+            "shape": "square",
+            "rate": 5000
+        },
+        {
+            "lfoName": "slowSin",
             "shape": "sin",
             "rate": 0.5
+        },
+        {
+            "lfoName": "fastSin",
+            "shape": "sin",
+            "rate": 5
+        },
+        {
+            "lfoName": "verySlow",
+            "shape": "sin",
+            "rate": 0.1
         }
     ],
     "swimmers": [
         {
             "parameters": {
                 "sources": [
-                    "/lfo_1/samples/C.wav"
+                    "/pond_1/samples/melody_4.wav"
                 ],
-                "volume": 0.25,
+                "volume": 1,
                 "probability": 1,
-                "interval": 2500,
-                "stereo": -1
+                "interval": 500,
+                "stereo": 1
             },
             "modMatrix": {
-                "lfoName": "volTest",
-                "paramMods": {
-                    "volumeMod": 0,
-                    "intervalMod": 0,
-                    "probabilityMod": 0,
-                    "stereoMod": 1
+                "volumeMod": {
+                    "lfo": "verySlow",
+                    "amount": 0.75
+                },
+                "intervalMod": {
+                    "lfo": "fastSin",
+                    "amount": 0.9
+                },
+                "probabilityMod": {
+                    "lfo": "gate",
+                    "amount": 1
+                },
+                "stereoMod": {
+                    "lfo": "slowSin",
+                    "amount": 1
                 }
+                
             } 
         }
     ]

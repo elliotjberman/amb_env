@@ -30,19 +30,38 @@ export default class Swimmer {
     this.index = 0;
     this.lastIndex = 0;
 
-    this.lfo = obj.lfo;
+    this.lfos = obj.lfos;
     
-    this.volumeMod = obj.modMatrix ? obj.modMatrix.paramMods.volumeMod : 0;
-    this.intervalMod = obj.modMatrix ? obj.modMatrix.paramMods.intervalMod : 0;
-    this.probabilityMod = obj.modMatrix ? obj.modMatrix.paramMods.probabilityMod : 0;
-    this.stereoMod = obj.modMatrix ? obj.modMatrix.paramMods.stereoMod : 0;
+    this.findLfo = (param) => {
+      for (let i = 0; i < this.lfos.length; i++) {
+        if (this.lfos[i].name === obj.modMatrix[param].lfo) {
+          return this.lfos[i];
+        }
+      }
+    }
+
+    this.volumeModAmount = obj.modMatrix.volumeMod.amount || 0;
+    this.volumeModLfo = this.findLfo('volumeMod');
+
+    this.intervalModAmount = obj.modMatrix.intervalMod.amount || 0;
+    this.intervalModLfo = this.findLfo('intervalMod');
+
+    this.probabilityModAmount = obj.modMatrix.probabilityMod.amount || 0;
+    this.probabilityModLfo = this.findLfo('probabilityMod');
+
+    this.stereoModAmount = obj.modMatrix.stereoMod.amount || 0;
+    this.stereoModLfo = this.findLfo('stereoMod');
+    
     this.phaseFlip = obj.modMatrix ? obj.modMatrix.phaseFlip : false;
 
     this.isLooper = !this.baseInterval;
   }
 
   activate() {
-    this.lfo.startTime = Date.now();
+    for (let i = 0; i < this.lfos.length; i++) {
+      this.lfos[i].startTime = Date.now();
+    }
+    
     this.queueAudio(this.baseInterval); // solidify the difference between baseInterval and interval
     if (!this.baseInterval) this.calcInterval();
   }
@@ -60,9 +79,9 @@ export default class Swimmer {
 
   lfoHandler() {
   
-    const modifyParam = (baseParam, modFactor, stereoHack) => {
-      let voltage =  this.phaseFlip ? 1 - this.lfo.getVoltage() : this.lfo.getVoltage();
-      if (this.lfo) {
+    const modifyParam = (baseParam, modFactor, lfo, stereoHack) => {
+      let voltage =  this.phaseFlip ? 1 - lfo.getVoltage() : lfo.getVoltage();
+      if (lfo) {
         let scaledParam = stereoHack ? baseParam * (voltage * 2 - 1) : baseParam * voltage;
         return modFactor * scaledParam + (1 - modFactor) * baseParam;
       }
@@ -70,15 +89,19 @@ export default class Swimmer {
 
     if (this.isLooper) { // SKETCH ?
       setInterval(() => { 
-      this.howls.forEach(howl => howl.volume(modifyParam(this.volume, this.volumeMod)));
+      this.howls.forEach(howl => howl.volume(modifyParam(this.volume, this.volumeModAmount, this.volumeModLfo)));
     }, 10);
     } else {
-      this.howls.forEach(howl => howl.volume(modifyParam(this.volume, this.volumeMod)));
+      this.howls.forEach(howl => howl.volume(modifyParam(this.volume, this.volumeModAmount, this.volumeModLfo)));
     }
 
-    this.howls.forEach(howl => howl.stereo(modifyParam(this.baseStereo, this.stereoMod, true)));
-    this.interval = modifyParam(this.baseInterval, this.intervalMod); 
-    this.probability = modifyParam(this.baseProbability, this.probabilityMod);
+    this.interval = modifyParam(this.baseInterval, this.intervalModAmount, this.intervalModLfo); 
+    this.probability = modifyParam(this.baseProbability, this.probabilityModAmount, this.probabilityModLfo);
+    
+    setInterval(() => { 
+      this.howls.forEach(howl => howl.stereo(modifyParam(this.baseStereo, this.stereoModAmount, this.stereoModLfo, true)));
+    }, 5);
+
   }
 
   playSound() {

@@ -1,0 +1,32 @@
+{
+    "title": "volume mod test",
+    "lfos": [
+        {
+            "lfoName": "volTest",
+            "shape": "sin",
+            "rate": 0.5
+        }
+    ],
+    "swimmers": [
+        {
+            "parameters": {
+                "sources": [
+                    "/lfo_1/samples/C.wav"
+                ],
+                "volume": 0.25,
+                "probability": 1,
+                "interval": 2500,
+                "stereo": -1
+            },
+            "modMatrix": {
+                "lfoName": "volTest",
+                "paramMods": {
+                    "volumeMod": 0,
+                    "intervalMod": 0,
+                    "probabilityMod": 0,
+                    "stereoMod": 1
+                }
+            } 
+        }
+    ]
+}

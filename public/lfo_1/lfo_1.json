@@ -1,21 +1,76 @@
 {
     "title": "lfo test 1",
-    "elements": [
+    "lfos": [
         {
-            "type": "chance",
-            "options": {
+            "lfoName": "wave",
+            "shape": "square",
+            "rate": 5000
+        },
+        {
+            "lfoName": "modTest",
+            "shape": "sin",
+            "rate": 1
+        }
+    ],
+    "swimmers": [
+        {
+            "parameters": {
                 "sources": [
-                    "/samples/Bb.wav",
-                    "/samples/C.wav",
-                    "/samples/D.wav",
-                    "/samples/F.wav"
+                    "/lfo_1/samples/bg_1.wav",
+                    "/lfo_1/samples/bg_2.wav",
+                    "/lfo_1/samples/bg_3.wav"
                 ],
+                "volume": 1,
                 "probability": 1,
+                "overlapAmount": 1000
+            },
+            "modMatrix": {
+                "lfoName": "wave",
+                "paramMods": {
+                    "volumeMod": 0,
+                    "intervalMod": 0,
+                    "probabilityMod": 0
+                }
+            } 
+        },
+        {
+            "parameters": {
+                "sources": [
+                    "/lfo_1/samples/bg_bass_1.wav",
+                    "/lfo_1/samples/bg_bass_2.wav"
+                ],
+                "volume": 0.15,
+                "probability": 1,
+                "overlapAmount": 0
+            },
+            "modMatrix": {
+                "lfoName": "wave",
+                "paramMods": {
+                    "volumeMod": 0,
+                    "intervalMod": 0,
+                    "probabilityMod": 0
+                }
+            } 
+        },
+        {
+            "parameters": {
+                "sources": [
+                    "/lfo_1/samples/D.wav",
+                    "/lfo_1/samples/C.wav",
+                    "/lfo_1/samples/F.wav"
+                ],
+                "volume": 0.4,
                 "interval": 100,
-                "volume": 0.5,
-                "isSequence": false,
-                "noRepeats": true
-            }
+                "probability": 0.2
+            },
+            "modMatrix": {
+                "lfoName": "wave",
+                "paramMods": {
+                    "volumeMod": 0,
+                    "intervalMod": 0,
+                    "probabilityMod": 1
+                }
+            } 
         }
     ]
 }

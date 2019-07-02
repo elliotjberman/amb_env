@@ -5,6 +5,11 @@
             "lfoName": "wave",
             "shape": "square",
             "rate": 5000
+        },
+        {
+            "lfoName": "modTest",
+            "shape": "sin",
+            "rate": 1
         }
     ],
     "swimmers": [

@@ -1,0 +1,215 @@
+{
+    "title": "stress test",
+    "lfos": [
+        {
+            "lfoName": "wave",
+            "shape": "square",
+            "rate": 5000
+        },
+        {
+            "lfoName": "megaSine",
+            "rate": 0.25,
+            "shape": "sine"
+        }
+    ],
+    "swimmers": [
+        {
+            "parameters": {
+                "sources": [
+                    "pond_1/samples/backdrop.wav"
+                ],
+                "volume": 2,
+                "probability": 1,
+                "overlapAmount": 25000,
+                "playAtStart": true,
+                "stereo": 0
+            },
+            "modMatrix": {
+                "volumeMod": {
+                    "lfo": "megaSine",
+                    "amount": 1
+                },
+                "intervalMod": {
+                    "lfo": "wave",
+                    "amount": 0
+                },
+                "probabilityMod": {
+                    "lfo": "wave",
+                    "amount": 0
+                },
+                "stereoMod": {
+                    "lfo": "wave",
+                    "amount": 0
+                }
+            } 
+        },
+        {
+            "parameters": {
+                "sources": [
+                    "/stress_test/samples/kick.wav"
+                ],
+                "volume": 0.5,
+                "interval": 500,
+                "probability": 1
+            },
+            "modMatrix": { 
+                "volumeMod": {
+                    "lfo": "wave",
+                    "amount": 0
+                },
+                "intervalMod": {
+                    "lfo": "wave",
+                    "amount": 0
+                },
+                "probabilityMod": {
+                    "lfo": "wave",
+                    "amount": 0
+                },
+                "stereoMod": {
+                    "lfo": "wave",
+                    "amount": 0
+                } 
+            } 
+        },
+        {
+            "parameters": {
+                "sources": [
+                    "/stress_test/samples/snare.wav"
+                ],
+                "volume": 0.5,
+                "interval": 1000,
+                "probability": 1
+            },
+            "modMatrix": { 
+                "volumeMod": {
+                    "lfo": "wave",
+                    "amount": 0
+                },
+                "intervalMod": {
+                    "lfo": "wave",
+                    "amount": 0
+                },
+                "probabilityMod": {
+                    "lfo": "wave",
+                    "amount": 0
+                },
+                "stereoMod": {
+                    "lfo": "wave",
+                    "amount": 0
+                } 
+            } 
+        },
+        {
+            "parameters": {
+                "sources": [
+                    "/stress_test/samples/hat.wav"
+                ],
+                "volume": 0.5,
+                "interval": 250,
+                "probability": 1
+            },
+            "modMatrix": { 
+                "volumeMod": {
+                    "lfo": "wave",
+                    "amount": 0
+                },
+                "intervalMod": {
+                    "lfo": "wave",
+                    "amount": 0
+                },
+                "probabilityMod": {
+                    "lfo": "wave",
+                    "amount": 0
+                },
+                "stereoMod": {
+                    "lfo": "wave",
+                    "amount": 0
+                } 
+            } 
+        },
+        {
+            "parameters": {
+                "sources": [
+                    "/stress_test/samples/Bb.wav"
+                ],
+                "volume": 0.5,
+                "interval": 250,
+                "probability": 1
+            },
+            "modMatrix": { 
+                "volumeMod": {
+                    "lfo": "wave",
+                    "amount": 0
+                },
+                "intervalMod": {
+                    "lfo": "wave",
+                    "amount": 0
+                },
+                "probabilityMod": {
+                    "lfo": "wave",
+                    "amount": 0
+                },
+                "stereoMod": {
+                    "lfo": "wave",
+                    "amount": 0
+                } 
+            } 
+        },
+        {
+            "parameters": {
+                "sources": [
+                    "/stress_test/samples/F.wav"
+                ],
+                "volume": 0.5,
+                "interval": 500,
+                "probability": 1
+            },
+            "modMatrix": { 
+                "volumeMod": {
+                    "lfo": "wave",
+                    "amount": 0
+                },
+                "intervalMod": {
+                    "lfo": "wave",
+                    "amount": 0
+                },
+                "probabilityMod": {
+                    "lfo": "wave",
+                    "amount": 0
+                },
+                "stereoMod": {
+                    "lfo": "wave",
+                    "amount": 0
+                } 
+            } 
+        },
+        {
+            "parameters": {
+                "sources": [
+                    "/stress_test/samples/C.wav"
+                ],
+                "volume": 0.5,
+                "interval": 1000,
+                "probability": 1
+            },
+            "modMatrix": { 
+                "volumeMod": {
+                    "lfo": "wave",
+                    "amount": 0
+                },
+                "intervalMod": {
+                    "lfo": "wave",
+                    "amount": 0
+                },
+                "probabilityMod": {
+                    "lfo": "wave",
+                    "amount": 0
+                },
+                "stereoMod": {
+                    "lfo": "wave",
+                    "amount": 0
+                } 
+            } 
+        }
+    ]
+}

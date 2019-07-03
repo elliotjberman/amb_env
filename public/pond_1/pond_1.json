@@ -51,6 +51,7 @@
                 "volume": 0.7,
                 "probability": 1,
                 "overlapAmount": 25000,
+                "playAtStart": true,
                 "stereo": 0
             },
             "modMatrix": {
@@ -80,6 +81,7 @@
                 "volume": 0.25,
                 "probability": 1,
                 "overlapAmount": 25000,
+                "playAtStart": true,
                 "stereo": 0
             },
             "modMatrix": {

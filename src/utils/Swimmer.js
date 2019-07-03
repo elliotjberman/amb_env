@@ -55,6 +55,8 @@ export default class Swimmer {
     this.phaseFlip = obj.modMatrix ? obj.modMatrix.phaseFlip : false;
 
     this.isLooper = !this.baseInterval;
+
+    this.playAtStart = obj.parameters.playAtStart || false;
   }
 
   activate() {
@@ -62,7 +64,7 @@ export default class Swimmer {
       this.lfos[i].startTime = Date.now();
     }
 
-    if (!this.baseInterval) this.calcInterval();
+    if (!this.baseInterval) this.calcInterval() ;
     this.queueAudio(this.baseInterval); // solidify the difference between baseInterval and interval
   }
 
@@ -71,9 +73,11 @@ export default class Swimmer {
   }
 
   queueAudio(interval) {
-    setTimeout(() => { 
+    if (this.playAtStart) this.playSound();
+    console.log(interval);
+    setInterval(() => { 
       this.playSound();
-      this.queueAudio(this.interval);
+      // this.queueAudio(this.interval);
     }, interval);
   }
 
@@ -87,7 +91,8 @@ export default class Swimmer {
       }
     }
 
-    if (this.isLooper) { // SKETCH ?
+    if (this.isLooper) { // SKETCH ? only use this on "long" swimmers, cutty for now
+      console.log('here');
       setInterval(() => { 
       this.howls.forEach(howl => howl.volume(modifyParam(this.volume, this.volumeModAmount, this.volumeModLfo)));
     }, 10);

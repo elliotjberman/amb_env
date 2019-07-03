@@ -1,0 +1,37 @@
+{
+    "title": "overlapping test",
+    "lfos": [
+        {
+            "lfoName": "sineTest",
+            "shape": "sine",
+            "rate": 0.25
+        }
+    ],
+    "swimmers": [
+        {
+            "parameters": {
+                "sources": [
+                    "pond_1/samples/backdrop.wav"
+                ],
+                "volume": 1,
+                "isLooper": true,
+                "overlapAmount": -2500,
+                "playOnStart": false,
+                "probability": 1,
+                "stereo": 0
+            },
+            "modMatrix": {
+                "volumeMod": {
+                    "lfo": "sineTest",
+                    "phaseFlip": false,
+                    "amount": 0
+                },
+                "probabilityMod": {
+                    "lfo": "sineTest",
+                    "phaseFlip": false,
+                    "amount": 0
+                }
+            } 
+        }
+    ]
+}

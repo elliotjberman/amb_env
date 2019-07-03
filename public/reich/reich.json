@@ -1,0 +1,82 @@
+{
+    "title": "reich: piano phase",
+    "lfos": [
+        {
+            "lfoName": "sineTest",
+            "shape": "sine",
+            "rate": 0.25
+        }
+    ],
+    "swimmers": [
+        {
+            "parameters": {
+                "sources": [
+                    "reich/samples/E.wav",
+                    "reich/samples/F_sharp.wav",
+                    "reich/samples/B.wav",
+                    "reich/samples/C_sharp.wav",
+                    "reich/samples/D.wav",
+                    "reich/samples/F_sharp.wav",
+                    "reich/samples/E.wav",
+                    "reich/samples/C_sharp.wav",
+                    "reich/samples/B.wav",
+                    "reich/samples/F_sharp.wav",
+                    "reich/samples/D.wav",
+                    "reich/samples/C_sharp.wav"
+                ],
+                "volume": 0.25,
+                "interval": 150,
+                "probability": 1,
+                "isSequence": true,
+                "stereo": -1
+            },
+            "modMatrix": {
+                "volumeMod": {
+                    "lfo": "sineTest",
+                    "phaseFlip": false,
+                    "amount": 0
+                },
+                "probabilityMod": {
+                    "lfo": "sineTest",
+                    "phaseFlip": false,
+                    "amount": 0
+                }
+            } 
+        },
+        {
+            "parameters": {
+                "sources": [
+                    "reich/samples/E.wav",
+                    "reich/samples/F_sharp.wav",
+                    "reich/samples/B.wav",
+                    "reich/samples/C_sharp.wav",
+                    "reich/samples/D.wav",
+                    "reich/samples/F_sharp.wav",
+                    "reich/samples/E.wav",
+                    "reich/samples/C_sharp.wav",
+                    "reich/samples/B.wav",
+                    "reich/samples/F_sharp.wav",
+                    "reich/samples/D.wav",
+                    "reich/samples/C_sharp.wav"
+                ],
+                "volume": 0.25,
+                "interval": 151,
+                "probability": 1,
+                "isSequence": true,
+                "stereo": 1
+            },
+            "modMatrix": {
+                "volumeMod": {
+                    "lfo": "sineTest",
+                    "phaseFlip": false, 
+                    "amount": 0
+                },
+                "probabilityMod": {
+                    "lfo": "sineTest",
+                    "phaseFlip": false,
+                    "amount": 0
+                }
+            } 
+        }
+    ]
+}

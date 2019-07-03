@@ -8,7 +8,7 @@ export default class Swimmer {
     this.baseProbability = obj.parameters.probability || 1;
     this.probability = this.baseProbability;
 
-    this.volume = obj.parameters.volume || 1;
+    this.volume = obj.parameters.volume;
 
     this.stereo= obj.parameters.stereo || 0;
     
@@ -22,10 +22,11 @@ export default class Swimmer {
 
     this.isSequence = obj.parameters.isSequence || false;
     this.noRepeats = obj.parameters.noRepeats || false;
+    this.noWavOverlapping = obj.parameters.noWavOverlapping || false;
+
+    this.isLooper = obj.parameters.isLooper || false;
     this.overlapAmount = obj.parameters.overlapAmount || 0;
     this.playOnStart = obj.parameters.playOnStart || false;
-
-    this.isLooper = !this.interval;
     
     this.lfos = obj.lfos;
     
@@ -56,16 +57,15 @@ export default class Swimmer {
       this.lfos[i].startTime = Date.now();
     }
 
-    if (!this.interval) this.calcInterval() ;
+    if (this.isLooper) this.calcInterval();
     this.queueAudio(this.interval); 
   }
 
   calcInterval() {
-    this.interval = (this.howls[0].duration() * 1000) - this.overlapAmount; 
+    this.interval = (this.howls[0].duration() * 1000) + this.overlapAmount; // sketchy how howls[0] duration harcoded
   }
 
   queueAudio(interval) {
-    console.log(interval);
     if (this.playOnStart) this.playSound();
     setInterval(() => { 
       this.playSound();
@@ -100,9 +100,16 @@ export default class Swimmer {
 
     this.lastIndex = this.index;
 
-    if (Math.random() <= this.probability) {  
-      this.goToNextIndex(); 
-      this.howls[this.index].play();
+    const goodToGo = this.noWavOverlapping ? !this.howls[this.lastIndex].playing() : true;
+
+    if (Math.random() <= this.probability && goodToGo) {
+      if (this.isSequence) {
+        this.howls[this.index].play();
+        this.goToNextIndex();  
+      } else {
+        this.goToNextIndex(); 
+        this.howls[this.index].play();
+      }
     }
   }
 

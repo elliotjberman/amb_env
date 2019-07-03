@@ -1,0 +1,134 @@
+{
+    "title": "senn 1",
+    "lfos": [
+        {
+            "lfoName": "playGate",
+            "shape": "square",
+            "rate": 6000
+        }
+    ],
+    "swimmers": [
+        {
+            "parameters": {
+                "sources": [
+                    "/senn_1/samples/1.wav",
+                    "/senn_1/samples/2.wav",
+                    "/senn_1/samples/3.wav",
+                    "/senn_1/samples/4.wav",
+                    "/senn_1/samples/5.wav",
+                    "/senn_1/samples/6.wav",
+                    "/senn_1/samples/7.wav",
+                    "/senn_1/samples/8.wav",
+                    "/senn_1/samples/9.wav",
+                    "/senn_1/samples/10.wav",
+                    "/senn_1/samples/11.wav",
+                    "/senn_1/samples/12.wav",
+                    "/senn_1/samples/13.wav",
+                    "/senn_1/samples/14.wav",
+                    "/senn_1/samples/15.wav",
+                    "/senn_1/samples/16.wav",
+                    "/senn_1/samples/17.wav",
+                    "/senn_1/samples/18.wav",
+                    "/senn_1/samples/19.wav",
+                    "/senn_1/samples/20.wav",
+                    "/senn_1/samples/21.wav",
+                    "/senn_1/samples/22.wav",
+                    "/senn_1/samples/23.wav",
+                    "/senn_1/samples/24.wav",
+                    "/senn_1/samples/25.wav",
+                    "/senn_1/samples/26.wav"
+                ],
+                "volume": 0.6,
+                "interval": 300,
+                "probability": 0.3,
+                "noRepeats": true,
+                "stereo": 0
+            },
+            "modMatrix": {
+                "volumeMod": {
+                    "lfo": "playGate",
+                    "phaseFlip": false,
+                    "amount": 0
+                },
+                "probabilityMod": {
+                    "lfo": "playGate",
+                    "phaseFlip": true,
+                    "amount": 1
+                }
+            } 
+        },
+        {
+            "parameters": {
+                "sources": [
+                    "/senn_1/samples/1.wav",
+                    "/senn_1/samples/2.wav",
+                    "/senn_1/samples/3.wav",
+                    "/senn_1/samples/4.wav",
+                    "/senn_1/samples/5.wav",
+                    "/senn_1/samples/6.wav",
+                    "/senn_1/samples/7.wav",
+                    "/senn_1/samples/8.wav",
+                    "/senn_1/samples/9.wav",
+                    "/senn_1/samples/10.wav",
+                    "/senn_1/samples/11.wav",
+                    "/senn_1/samples/12.wav",
+                    "/senn_1/samples/13.wav",
+                    "/senn_1/samples/14.wav",
+                    "/senn_1/samples/15.wav",
+                    "/senn_1/samples/16.wav",
+                    "/senn_1/samples/17.wav",
+                    "/senn_1/samples/18.wav",
+                    "/senn_1/samples/19.wav",
+                    "/senn_1/samples/20.wav",
+                    "/senn_1/samples/21.wav",
+                    "/senn_1/samples/22.wav",
+                    "/senn_1/samples/23.wav",
+                    "/senn_1/samples/24.wav",
+                    "/senn_1/samples/25.wav",
+                    "/senn_1/samples/26.wav"
+                ],
+                "volume": 0.6,
+                "interval": 12000,
+                "playOnStart": true,
+                "probability": 1,
+                "stereo": 0
+            },
+            "modMatrix": {
+                "volumeMod": {
+                    "lfo": "playGate",
+                    "phaseFlip": false,
+                    "amount": 0
+                },
+                "probabilityMod": {
+                    "lfo": "playGate",
+                    "phaseFlip": true,
+                    "amount": 0
+                }
+            } 
+        },
+        {
+            "parameters": {
+                "sources": [
+                    "/senn_1/samples/hi1.wav",
+                    "/senn_1/samples/hi2.wav"
+                ],
+                "volume": 0.75,
+                "interval": 306000,
+                "probability": 1,
+                "stereo": 0
+            },
+            "modMatrix": {
+                "volumeMod": {
+                    "lfo": "playGate",
+                    "phaseFlip": false,
+                    "amount": 0
+                },
+                "probabilityMod": {
+                    "lfo": "playGate",
+                    "phaseFlip": false,
+                    "amount": 0
+                }
+            } 
+        }
+    ]
+}

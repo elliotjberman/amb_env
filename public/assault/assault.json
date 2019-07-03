@@ -1,0 +1,227 @@
+{
+    "title": "assault the runway",
+    "lfos": [
+        {
+            "lfoName": "playGate",
+            "shape": "square",
+            "rate": 10000
+        }
+    ],
+    "swimmers": [
+        {
+            "parameters": {
+                "sources": [
+                    "/assault/samples/kick.wav"
+                ],
+                "volume": 0.6,
+                "interval": 150,
+                "probability": 0.25,
+                "stereo": 0
+            },
+            "modMatrix": {
+                "volumeMod": {
+                    "lfo": "playGate",
+                    "phaseFlip": false,
+                    "amount": 0
+                },
+                "probabilityMod": {
+                    "lfo": "playGate",
+                    "phaseFlip": false,
+                    "amount": 1
+                }
+            } 
+        },
+        {
+            "parameters": {
+                "sources": [
+                    "/assault/samples/hat.wav"
+                ],
+                "volume": 0.6,
+                "interval": 50,
+                "probability": 0.3,
+                "stereo": 0
+            },
+            "modMatrix": {
+                "volumeMod": {
+                    "lfo": "playGate",
+                    "phaseFlip": false,
+                    "amount": 0
+                },
+                "probabilityMod": {
+                    "lfo": "playGate",
+                    "phaseFlip": false,
+                    "amount": 1
+                }
+            } 
+        },
+        {
+            "parameters": {
+                "sources": [
+                    "/assault/samples/snare.wav"
+                ],
+                "volume": 1,
+                "interval": 1500,
+                "probability": 0.5,
+                "stereo": 0
+            },
+            "modMatrix": {
+                "volumeMod": {
+                    "lfo": "playGate",
+                    "phaseFlip": false,
+                    "amount": 0
+                },
+                "probabilityMod": {
+                    "lfo": "playGate",
+                    "phaseFlip": false,
+                    "amount": 1
+                }
+            } 
+        },
+        {
+            "parameters": {
+                "sources": [
+                    "/assault/samples/sub.wav"
+                ],
+                "volume": 0.6,
+                "interval": 500,
+                "probability": 0.8,
+                "noWavOverlapping": true,
+                "stereo": 0
+            },
+            "modMatrix": {
+                "volumeMod": {
+                    "lfo": "playGate",
+                    "phaseFlip": false,
+                    "amount": 0
+                },
+                "probabilityMod": {
+                    "lfo": "playGate",
+                    "phaseFlip": false,
+                    "amount": 1
+                }
+            } 
+        },
+        {
+            "parameters": {
+                "sources": [
+                    "/assault/samples/roar_hi.wav",
+                    "/assault/samples/roar_mid.wav",
+                    "/assault/samples/roar_lo.wav"
+                ],
+                "volume": 0.4,
+                "interval": 10000,
+                "probability": 0.5,
+                "noWavOverlapping": true,
+                "stereo": 0
+            },
+            "modMatrix": {
+                "volumeMod": {
+                    "lfo": "playGate",
+                    "phaseFlip": false,
+                    "amount": 0
+                },
+                "probabilityMod": {
+                    "lfo": "playGate",
+                    "phaseFlip": false,
+                    "amount": 1
+                }
+            } 
+        },
+        {
+            "parameters": {
+                "sources": [
+                    "/assault/samples/hat_hi.wav"
+                ],
+                "volume": 0.25,
+                "interval": 50,
+                "probability": 0.5,
+                "stereo": 0
+            },
+            "modMatrix": {
+                "volumeMod": {
+                    "lfo": "playGate",
+                    "phaseFlip": false,
+                    "amount": 0
+                },
+                "probabilityMod": {
+                    "lfo": "playGate",
+                    "phaseFlip": true,
+                    "amount": 1
+                }
+            } 
+        },
+        {
+            "parameters": {
+                "sources": [
+                    "/assault/samples/spray_1.wav",
+                    "/assault/samples/spray_2.wav",
+                    "/assault/samples/spray_3.wav"
+                ],
+                "volume": 0.85,
+                "interval": 1500,
+                "probability": 0.4,
+                "stereo": 0
+            },
+            "modMatrix": {
+                "volumeMod": {
+                    "lfo": "playGate",
+                    "phaseFlip": false,
+                    "amount": 0
+                },
+                "probabilityMod": {
+                    "lfo": "playGate",
+                    "phaseFlip": true,
+                    "amount": 1
+                }
+            } 
+        },
+        {
+            "parameters": {
+                "sources": [
+                    "/assault/samples/spray_4.wav"
+                ],
+                "volume": 0.75,
+                "interval": 7000,
+                "probability": 0.5,
+                "stereo": 0
+            },
+            "modMatrix": {
+                "volumeMod": {
+                    "lfo": "playGate",
+                    "phaseFlip": false,
+                    "amount": 0
+                },
+                "probabilityMod": {
+                    "lfo": "playGate",
+                    "phaseFlip": false,
+                    "amount": 1
+                }
+            } 
+        },
+        {
+            "parameters": {
+                "sources": [
+                    "/assault/samples/pad.wav"
+                ],
+                "volume": 0.4,
+                "isLooper": true,
+                "overlapAmount": 0,
+                "playOnStart": true,
+                "probability": 0.2,
+                "stereo": 0
+            },
+            "modMatrix": {
+                "volumeMod": {
+                    "lfo": "playGate",
+                    "phaseFlip": false,
+                    "amount": 0
+                },
+                "probabilityMod": {
+                    "lfo": "playGate",
+                    "phaseFlip": false,
+                    "amount": true
+                }
+            } 
+        }      
+    ]
+}

@@ -20,7 +20,8 @@
                 ],
                 "volume": 2,
                 "probability": 1,
-                "overlapAmount": 25000,
+                "isLooper": true,
+                "overlapAmount": -25000,
                 "playOnStart": true,
                 "stereo": 0
             },
@@ -29,15 +30,7 @@
                     "lfo": "megaSine",
                     "amount": 1
                 },
-                "intervalMod": {
-                    "lfo": "wave",
-                    "amount": 0
-                },
                 "probabilityMod": {
-                    "lfo": "wave",
-                    "amount": 0
-                },
-                "stereoMod": {
                     "lfo": "wave",
                     "amount": 0
                 }
@@ -57,18 +50,10 @@
                     "lfo": "wave",
                     "amount": 0
                 },
-                "intervalMod": {
-                    "lfo": "wave",
-                    "amount": 0
-                },
                 "probabilityMod": {
                     "lfo": "wave",
                     "amount": 0
-                },
-                "stereoMod": {
-                    "lfo": "wave",
-                    "amount": 0
-                } 
+                }
             } 
         },
         {
@@ -85,18 +70,10 @@
                     "lfo": "wave",
                     "amount": 0
                 },
-                "intervalMod": {
-                    "lfo": "wave",
-                    "amount": 0
-                },
                 "probabilityMod": {
                     "lfo": "wave",
                     "amount": 0
-                },
-                "stereoMod": {
-                    "lfo": "wave",
-                    "amount": 0
-                } 
+                }
             } 
         },
         {
@@ -113,18 +90,10 @@
                     "lfo": "wave",
                     "amount": 0
                 },
-                "intervalMod": {
-                    "lfo": "wave",
-                    "amount": 0
-                },
                 "probabilityMod": {
                     "lfo": "wave",
                     "amount": 0
-                },
-                "stereoMod": {
-                    "lfo": "wave",
-                    "amount": 0
-                } 
+                }
             } 
         },
         {
@@ -141,18 +110,10 @@
                     "lfo": "wave",
                     "amount": 0
                 },
-                "intervalMod": {
-                    "lfo": "wave",
-                    "amount": 0
-                },
                 "probabilityMod": {
                     "lfo": "wave",
                     "amount": 0
-                },
-                "stereoMod": {
-                    "lfo": "wave",
-                    "amount": 0
-                } 
+                }
             } 
         },
         {
@@ -169,18 +130,10 @@
                     "lfo": "wave",
                     "amount": 0
                 },
-                "intervalMod": {
-                    "lfo": "wave",
-                    "amount": 0
-                },
                 "probabilityMod": {
                     "lfo": "wave",
                     "amount": 0
-                },
-                "stereoMod": {
-                    "lfo": "wave",
-                    "amount": 0
-                } 
+                }
             } 
         },
         {
@@ -197,18 +150,10 @@
                     "lfo": "wave",
                     "amount": 0
                 },
-                "intervalMod": {
-                    "lfo": "wave",
-                    "amount": 0
-                },
                 "probabilityMod": {
                     "lfo": "wave",
                     "amount": 0
-                },
-                "stereoMod": {
-                    "lfo": "wave",
-                    "amount": 0
-                } 
+                }
             } 
         }
     ]

@@ -102,6 +102,8 @@ export default class Swimmer {
 
     const goodToGo = this.noWavOverlapping ? !this.howls[this.lastIndex].playing() : true;
 
+    console.log('clock');
+
     if (Math.random() <= this.probability && goodToGo) {
       if (this.isSequence) {
         this.howls[this.index].play();

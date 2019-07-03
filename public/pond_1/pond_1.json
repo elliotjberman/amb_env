@@ -15,31 +15,6 @@
             "lfoName": "megaSine",
             "rate": 0.002,
             "shape": "sine"
-        },
-        {
-            "lfoName": "fastSine",
-            "rate": 0.25,
-            "shape": "sine"
-        },
-        {
-            "lfoName": "steps1",
-            "rate": 240000,
-            "shape": "square"
-        },
-        {
-            "lfoName": "zoom1",
-            "rate": 300000,
-            "shape": "square"
-        },
-        {
-            "lfoName": "zoom2",
-            "rate": 360000,
-            "shape": "square"
-        },
-        {
-            "lfoName": "zoom3",
-            "rate": 420000,
-            "shape": "square"
         }
     ],
     "swimmers": [
@@ -50,8 +25,9 @@
                 ],
                 "volume": 0.7,
                 "probability": 1,
-                "overlapAmount": 25000,
-                "playAtStart": true,
+                "isLooper": true,
+                "overlapAmount": -25000,
+                "playOnStart": true,
                 "stereo": 0
             },
             "modMatrix": {
@@ -59,15 +35,7 @@
                     "lfo": "slowWave",
                     "amount": 0
                 },
-                "intervalMod": {
-                    "lfo": "slowWave",
-                    "amount": 0
-                },
                 "probabilityMod": {
-                    "lfo": "slowWave",
-                    "amount": 0
-                },
-                "stereoMod": {
                     "lfo": "slowWave",
                     "amount": 0
                 }
@@ -80,8 +48,9 @@
                 ],
                 "volume": 0.25,
                 "probability": 1,
-                "overlapAmount": 25000,
-                "playAtStart": true,
+                "isLooper": true,
+                "overlapAmount": -25000,
+                "playOnStart": true,
                 "stereo": 0
             },
             "modMatrix": {
@@ -89,15 +58,7 @@
                     "lfo": "megaSine",
                     "amount": 1
                 },
-                "intervalMod": {
-                    "lfo": "slowWave",
-                    "amount": 0
-                },
                 "probabilityMod": {
-                    "lfo": "slowWave",
-                    "amount": 0
-                },
-                "stereoMod": {
                     "lfo": "slowWave",
                     "amount": 0
                 }
@@ -122,17 +83,9 @@
                     "lfo": "slowWave",
                     "amount": 0
                 },
-                "intervalMod": {
-                    "lfo": "slowWave",
-                    "amount": 0
-                },
                 "probabilityMod": {
                     "lfo": "slowWave",
                     "amount": 1
-                },
-                "stereoMod": {
-                    "lfo": "slowWave",
-                    "amount": 0
                 }
             } 
         },
@@ -157,18 +110,10 @@
                     "lfo": "mediumWave",
                     "amount": 0
                 },
-                "intervalMod": {
-                    "lfo": "mediumWave",
-                    "amount": 0
-                },
                 "probabilityMod": {
                     "lfo": "mediumWave",
                     "amount": 1
-                },
-                "stereoMod": {
-                    "lfo": "fastSine",
-                    "amount": 0
-                } 
+                }
             } 
         },
         {
@@ -177,7 +122,7 @@
                     "pond_1/samples/steps.wav"
                 ],
                 "volume": 0.5,
-                "interval": 230000,
+                "interval": 240000,
                 "probability": 1,
                 "stereo": 0
             },
@@ -186,18 +131,10 @@
                     "lfo": "mediumWave",
                     "amount": 0
                 },
-                "intervalMod": {
+                "probabilityMod": {
                     "lfo": "mediumWave",
                     "amount": 0
-                },
-                "probabilityMod": {
-                    "lfo": "steps1",
-                    "amount": 1
-                },
-                "stereoMod": {
-                    "lfo": "fastSine",
-                    "amount": 0
-                } 
+                }
             } 
         },
         {
@@ -206,7 +143,7 @@
                     "pond_1/samples/zoom_1.wav"
                 ],
                 "volume": 0.7,
-                "interval": 290000,
+                "interval": 300000,
                 "probability": 1,
                 "stereo": 0
             },
@@ -215,18 +152,10 @@
                     "lfo": "mediumWave",
                     "amount": 0
                 },
-                "intervalMod": {
+                "probabilityMod": {
                     "lfo": "mediumWave",
                     "amount": 0
-                },
-                "probabilityMod": {
-                    "lfo": "zoom1",
-                    "amount": 1
-                },
-                "stereoMod": {
-                    "lfo": "fastSine",
-                    "amount": 0
-                } 
+                }
             } 
         },
         {
@@ -235,7 +164,7 @@
                     "pond_1/samples/zoom_2.wav"
                 ],
                 "volume": 0.7,
-                "interval": 350000,
+                "interval": 360000,
                 "probability": 1,
                 "stereo": 0
             },
@@ -244,18 +173,10 @@
                     "lfo": "mediumWave",
                     "amount": 0
                 },
-                "intervalMod": {
+                "probabilityMod": {
                     "lfo": "mediumWave",
                     "amount": 0
-                },
-                "probabilityMod": {
-                    "lfo": "zoom2",
-                    "amount": 1
-                },
-                "stereoMod": {
-                    "lfo": "fastSine",
-                    "amount": 0
-                } 
+                }
             } 
         },
         {
@@ -264,7 +185,7 @@
                     "pond_1/samples/zoom_3.wav"
                 ],
                 "volume": 0.7,
-                "interval": 410000,
+                "interval": 420000,
                 "probability": 1,
                 "stereo": 0
             },
@@ -273,18 +194,10 @@
                     "lfo": "mediumWave",
                     "amount": 0
                 },
-                "intervalMod": {
+                "probabilityMod": {
                     "lfo": "mediumWave",
                     "amount": 0
-                },
-                "probabilityMod": {
-                    "lfo": "zoom3",
-                    "amount": 1
-                },
-                "stereoMod": {
-                    "lfo": "fastSine",
-                    "amount": 0
-                } 
+                }
             } 
         }
     ]

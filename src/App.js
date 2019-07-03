@@ -4,7 +4,7 @@ import Home from './components/Home';
 
 function App() {
   return (
-    <Home url={'/overlapping-test.json'} />
+    <Home url={'/assault/assault.json'} />
   );
 }
 

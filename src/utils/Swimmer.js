@@ -3,33 +3,30 @@ import {Howl} from 'howler';
 export default class Swimmer {
   constructor(obj) {
 
-    this.baseInterval = obj.parameters.interval;
-    this.interval = this.baseInterval;
+    this.interval = obj.parameters.interval;
 
     this.baseProbability = obj.parameters.probability || 1;
     this.probability = this.baseProbability;
 
-    this.baseVolume = obj.parameters.volume || 1;
-    this.volume = this.baseVolume;
+    this.volume = obj.parameters.volume || 1;
 
-    this.baseStereo = obj.parameters.stereo || 0;
-    this.stereo = this.baseStereo;
+    this.stereo= obj.parameters.stereo || 0;
     
     this.howls = obj.parameters.sources.map((source) => {
       return new Howl({
         src: [source],
-        volume: this.baseVolume,
-        stereo: this.baseStereo
+        volume: this.volume,
+        stereo: this.stereo
       });
     });
 
     this.isSequence = obj.parameters.isSequence || false;
     this.noRepeats = obj.parameters.noRepeats || false;
     this.overlapAmount = obj.parameters.overlapAmount || 0;
-    
-    this.index = 0;
-    this.lastIndex = 0;
+    this.playOnStart = obj.parameters.playOnStart || false;
 
+    this.isLooper = !this.interval;
+    
     this.lfos = obj.lfos;
     
     this.findLfo = (param) => {
@@ -40,23 +37,18 @@ export default class Swimmer {
       }
     }
 
-    this.volumeModAmount = obj.modMatrix.volumeMod.amount || 0;
     this.volumeModLfo = this.findLfo('volumeMod');
-
-    this.intervalModAmount = obj.modMatrix.intervalMod.amount || 0;
-    this.intervalModLfo = this.findLfo('intervalMod');
-
-    this.probabilityModAmount = obj.modMatrix.probabilityMod.amount || 0;
+    this.volumeModPhaseFlip = obj.modMatrix.volumeMod.phaseFlip || false;
+    this.volumeModAmount = obj.modMatrix.volumeMod.amount || 0;
+    
     this.probabilityModLfo = this.findLfo('probabilityMod');
-
-    this.stereoModAmount = obj.modMatrix.stereoMod.amount || 0;
-    this.stereoModLfo = this.findLfo('stereoMod');
+    this.probabilityModPhaseFlip = obj.modMatrix.probabilityMod.phaseFlip || false;
+    this.probabilityModAmount = obj.modMatrix.probabilityMod.amount || 0;
     
     this.phaseFlip = obj.modMatrix ? obj.modMatrix.phaseFlip : false;
 
-    this.isLooper = !this.baseInterval;
-
-    this.playAtStart = obj.parameters.playAtStart || false;
+    this.index = 0;
+    this.lastIndex = 0;
   }
 
   activate() {
@@ -64,60 +56,52 @@ export default class Swimmer {
       this.lfos[i].startTime = Date.now();
     }
 
-    if (!this.baseInterval) this.calcInterval() ;
-    this.queueAudio(this.baseInterval); // solidify the difference between baseInterval and interval
+    if (!this.interval) this.calcInterval() ;
+    this.queueAudio(this.interval); 
   }
 
   calcInterval() {
-    this.baseInterval = (this.howls[0].duration() * 1000) - this.overlapAmount; // make this take in the overall length and calc an overlap percentage
+    this.interval = (this.howls[0].duration() * 1000) - this.overlapAmount; 
   }
 
   queueAudio(interval) {
-    if (this.playAtStart) this.playSound();
     console.log(interval);
+    if (this.playOnStart) this.playSound();
     setInterval(() => { 
       this.playSound();
-      // this.queueAudio(this.interval);
     }, interval);
   }
 
   lfoHandler() {
-  
-    const modifyParam = (baseParam, modFactor, lfo, stereoHack) => {
-      let voltage =  this.phaseFlip ? 1 - lfo.getVoltage() : lfo.getVoltage();
+    const modifyParam = (baseParam, modFactor, lfo, phaseFlip) => {
+      let voltage =  phaseFlip ? 1 - lfo.getVoltage() : lfo.getVoltage();
       if (lfo) {
-        let scaledParam = stereoHack ? baseParam * (voltage * 2 - 1) : baseParam * voltage;
+        let scaledParam = baseParam * voltage;
         return modFactor * scaledParam + (1 - modFactor) * baseParam;
       }
     }
 
+    const sampleRate = 10;
+
     if (this.isLooper) { // SKETCH ? only use this on "long" swimmers, cutty for now
-      console.log('here');
-      setInterval(() => { 
-      this.howls.forEach(howl => howl.volume(modifyParam(this.volume, this.volumeModAmount, this.volumeModLfo)));
-    }, 10);
-    } else {
-      this.howls.forEach(howl => howl.volume(modifyParam(this.volume, this.volumeModAmount, this.volumeModLfo)));
+        console.log('in the danger zone...');
+        setInterval(() => { 
+        this.howls.forEach(howl => howl.volume(modifyParam(this.volume, this.volumeModAmount, this.volumeModLfo, this.volumeModPhaseFlip)));
+      }, sampleRate);
+      } else {
+        this.howls.forEach(howl => howl.volume(modifyParam(this.volume, this.volumeModAmount, this.volumeModLfo, this.volumeModPhaseFlip)));
     }
 
-    this.interval = modifyParam(this.baseInterval, this.intervalModAmount, this.intervalModLfo); 
-    this.probability = modifyParam(this.baseProbability, this.probabilityModAmount, this.probabilityModLfo);
-    
-    // setInterval(() => { 
-    //   this.howls.forEach(howl => howl.stereo(modifyParam(this.baseStereo, this.stereoModAmount, this.stereoModLfo, true)));
-    // }, 5);
-
+    this.probability = modifyParam(this.baseProbability, this.probabilityModAmount, this.probabilityModLfo, this.probabilityModPhaseFlip);
   }
 
   playSound() {
     this.lfoHandler();
 
-    console.log('playing sound...');
-
-    this.lastIndex = this.index; // needed to move up here
+    this.lastIndex = this.index;
 
     if (Math.random() <= this.probability) {  
-      this.goToNextIndex(); // this messes with the sequence tho
+      this.goToNextIndex(); 
       this.howls[this.index].play();
     }
   }
@@ -139,7 +123,6 @@ export default class Swimmer {
   }
 
   goToNextIndex() {
-    
     if (this.isSequence) {
       this.incrementIndex();
       return;

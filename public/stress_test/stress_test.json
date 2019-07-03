@@ -21,7 +21,7 @@
                 "volume": 2,
                 "probability": 1,
                 "overlapAmount": 25000,
-                "playAtStart": true,
+                "playOnStart": true,
                 "stereo": 0
             },
             "modMatrix": {

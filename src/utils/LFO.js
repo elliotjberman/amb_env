@@ -13,7 +13,7 @@ export default class LFO {
     let secondsElapsed = (Date.now() - this.startTime) / 1000;
     let wave = -0.5 * (Math.cos(secondsElapsed * this.rate * 2 * Math.PI) -1);
 
-    if (this.shape === 'sin') return wave;
+    if (this.shape === 'sine') return wave;
 
     if (this.shape === 'square') return Number(this.on); 
   }

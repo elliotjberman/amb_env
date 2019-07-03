@@ -10,6 +10,36 @@
             "lfoName": "mediumWave",
             "rate": 25000,
             "shape": "square"
+        },
+        {
+            "lfoName": "megaSine",
+            "rate": 0.002,
+            "shape": "sine"
+        },
+        {
+            "lfoName": "fastSine",
+            "rate": 0.25,
+            "shape": "sine"
+        },
+        {
+            "lfoName": "steps1",
+            "rate": 240000,
+            "shape": "square"
+        },
+        {
+            "lfoName": "zoom1",
+            "rate": 300000,
+            "shape": "square"
+        },
+        {
+            "lfoName": "zoom2",
+            "rate": 360000,
+            "shape": "square"
+        },
+        {
+            "lfoName": "zoom3",
+            "rate": 420000,
+            "shape": "square"
         }
     ],
     "swimmers": [
@@ -18,18 +48,58 @@
                 "sources": [
                     "pond_1/samples/backdrop.wav"
                 ],
-                "volume": 0.75,
+                "volume": 0.7,
                 "probability": 1,
                 "overlapAmount": 25000,
+                "playAtStart": true,
                 "stereo": 0
             },
             "modMatrix": {
-                "lfoName": "slowWave",
-                "paramMods": {
-                    "volumeMod": 0,
-                    "intervalMod": 0,
-                    "probabilityMod": 0,
-                    "stereoMod": 0
+                "volumeMod": {
+                    "lfo": "slowWave",
+                    "amount": 0
+                },
+                "intervalMod": {
+                    "lfo": "slowWave",
+                    "amount": 0
+                },
+                "probabilityMod": {
+                    "lfo": "slowWave",
+                    "amount": 0
+                },
+                "stereoMod": {
+                    "lfo": "slowWave",
+                    "amount": 0
+                }
+            } 
+        },
+        {
+            "parameters": {
+                "sources": [
+                    "pond_1/samples/shimmer.wav"
+                ],
+                "volume": 0.25,
+                "probability": 1,
+                "overlapAmount": 25000,
+                "playAtStart": true,
+                "stereo": 0
+            },
+            "modMatrix": {
+                "volumeMod": {
+                    "lfo": "megaSine",
+                    "amount": 1
+                },
+                "intervalMod": {
+                    "lfo": "slowWave",
+                    "amount": 0
+                },
+                "probabilityMod": {
+                    "lfo": "slowWave",
+                    "amount": 0
+                },
+                "stereoMod": {
+                    "lfo": "slowWave",
+                    "amount": 0
                 }
             } 
         },
@@ -48,12 +118,21 @@
                 "stereo": 0
             },
             "modMatrix": {
-                "lfoName": "slowWave",
-                "paramMods": {
-                    "volumeMod": 0,
-                    "intervalMod": 0,
-                    "probabilityMod": 1,
-                    "stereoMod": 0
+                "volumeMod": {
+                    "lfo": "slowWave",
+                    "amount": 0
+                },
+                "intervalMod": {
+                    "lfo": "slowWave",
+                    "amount": 0
+                },
+                "probabilityMod": {
+                    "lfo": "slowWave",
+                    "amount": 1
+                },
+                "stereoMod": {
+                    "lfo": "slowWave",
+                    "amount": 0
                 }
             } 
         },
@@ -71,16 +150,141 @@
                 "volume": 0.4,
                 "interval": 500,
                 "probability": 0.15,
-                "stereo": 1
+                "stereo": 0
             },
-            "modMatrix": {
-                "lfoName": "mediumWave",
-                "paramMods": {
-                    "volumeMod": 0,
-                    "intervalMod": 0,
-                    "probabilityMod": 1,
-                    "stereoMod": 0
-                }
+            "modMatrix": { 
+                "volumeMod": {
+                    "lfo": "mediumWave",
+                    "amount": 0
+                },
+                "intervalMod": {
+                    "lfo": "mediumWave",
+                    "amount": 0
+                },
+                "probabilityMod": {
+                    "lfo": "mediumWave",
+                    "amount": 1
+                },
+                "stereoMod": {
+                    "lfo": "fastSine",
+                    "amount": 0
+                } 
+            } 
+        },
+        {
+            "parameters": {
+                "sources": [
+                    "pond_1/samples/steps.wav"
+                ],
+                "volume": 0.5,
+                "interval": 230000,
+                "probability": 1,
+                "stereo": 0
+            },
+            "modMatrix": { 
+                "volumeMod": {
+                    "lfo": "mediumWave",
+                    "amount": 0
+                },
+                "intervalMod": {
+                    "lfo": "mediumWave",
+                    "amount": 0
+                },
+                "probabilityMod": {
+                    "lfo": "steps1",
+                    "amount": 1
+                },
+                "stereoMod": {
+                    "lfo": "fastSine",
+                    "amount": 0
+                } 
+            } 
+        },
+        {
+            "parameters": {
+                "sources": [
+                    "pond_1/samples/zoom_1.wav"
+                ],
+                "volume": 0.7,
+                "interval": 290000,
+                "probability": 1,
+                "stereo": 0
+            },
+            "modMatrix": { 
+                "volumeMod": {
+                    "lfo": "mediumWave",
+                    "amount": 0
+                },
+                "intervalMod": {
+                    "lfo": "mediumWave",
+                    "amount": 0
+                },
+                "probabilityMod": {
+                    "lfo": "zoom1",
+                    "amount": 1
+                },
+                "stereoMod": {
+                    "lfo": "fastSine",
+                    "amount": 0
+                } 
+            } 
+        },
+        {
+            "parameters": {
+                "sources": [
+                    "pond_1/samples/zoom_2.wav"
+                ],
+                "volume": 0.7,
+                "interval": 350000,
+                "probability": 1,
+                "stereo": 0
+            },
+            "modMatrix": { 
+                "volumeMod": {
+                    "lfo": "mediumWave",
+                    "amount": 0
+                },
+                "intervalMod": {
+                    "lfo": "mediumWave",
+                    "amount": 0
+                },
+                "probabilityMod": {
+                    "lfo": "zoom2",
+                    "amount": 1
+                },
+                "stereoMod": {
+                    "lfo": "fastSine",
+                    "amount": 0
+                } 
+            } 
+        },
+        {
+            "parameters": {
+                "sources": [
+                    "pond_1/samples/zoom_3.wav"
+                ],
+                "volume": 0.7,
+                "interval": 410000,
+                "probability": 1,
+                "stereo": 0
+            },
+            "modMatrix": { 
+                "volumeMod": {
+                    "lfo": "mediumWave",
+                    "amount": 0
+                },
+                "intervalMod": {
+                    "lfo": "mediumWave",
+                    "amount": 0
+                },
+                "probabilityMod": {
+                    "lfo": "zoom3",
+                    "amount": 1
+                },
+                "stereoMod": {
+                    "lfo": "fastSine",
+                    "amount": 0
+                } 
             } 
         }
     ]

@@ -18,19 +18,11 @@ export default class Home extends React.Component {
     });
 
     this.swimmers = config.swimmers.map((swimmer) => {
-      let chosenLfo;
-      for (let i = 0; i < allLfos.length; i++) {
-        if (swimmer.modMatrix) {
-          if (allLfos[i].name === swimmer.modMatrix.lfoName) {
-            chosenLfo = allLfos[i];
-          }
-        }
-      }
 
       const props = {
         parameters: swimmer.parameters, 
         modMatrix: swimmer.modMatrix ? swimmer.modMatrix : null, 
-        lfo: chosenLfo ? chosenLfo : null
+        lfos: allLfos
       }
       
       return new Swimmer(props);

@@ -3,8 +3,9 @@
     "lfos": [
         {
             "lfoName": "playGate",
-            "shape": "square",
-            "rate": 10000
+            "shape": "PULSE",
+            "rate": 20000,
+            "dutyCycle": 50
         }
     ],
     "swimmers": [
@@ -203,7 +204,7 @@
                 "sources": [
                     "/assault/samples/pad.wav"
                 ],
-                "volume": 0.4,
+                "volume": 0.6,
                 "isLooper": true,
                 "overlapAmount": 0,
                 "playOnStart": true,
@@ -219,7 +220,7 @@
                 "probabilityMod": {
                     "lfo": "playGate",
                     "phaseFlip": false,
-                    "amount": true
+                    "amount": 1
                 }
             } 
         }      

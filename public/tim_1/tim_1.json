@@ -1,0 +1,96 @@
+{
+    "title": "tim 1",
+    "lfos": [
+        {
+            "lfoName": "onGate",
+            "shape": "PULSE",
+            "rate": 60000,
+            "dutyCycle": 50
+        }
+    ],
+    "swimmers": [
+        {
+            "parameters": {
+                "sources": [
+                    "tim_1/samples/pad_1.wav",
+                    "tim_1/samples/pad_2.wav",
+                    "tim_1/samples/pad_3.wav",
+                    "tim_1/samples/pad_4.wav"
+                ],
+                "volume": 0.75,
+                "isLooper": true,
+                "overlapAmount": -2000,
+                "playOnStart": true,
+                "probability": 0.9,
+                "stereo": 0
+            },
+            "modMatrix": {
+                "volumeMod": {
+                    "lfo": "onGate",
+                    "phaseFlip": false,
+                    "amount": 0
+                },
+                "probabilityMod": {
+                    "lfo": "onGate",
+                    "phaseFlip": false,
+                    "amount": 1
+                }
+            } 
+        },
+        {
+            "parameters": {
+                "sources": [
+                    "tim_1/samples/pad_1a.wav",
+                    "tim_1/samples/pad_2a.wav",
+                    "tim_1/samples/pad_3a.wav",
+                    "tim_1/samples/pad_4a.wav"
+                ],
+                "volume": 0.75,
+                "isLooper": true,
+                "overlapAmount": -2000,
+                "playOnStart": true,
+                "probability": 0.9,
+                "stereo": 0
+            },
+            "modMatrix": {
+                "volumeMod": {
+                    "lfo": "onGate",
+                    "phaseFlip": false,
+                    "amount": 0
+                },
+                "probabilityMod": {
+                    "lfo": "onGate",
+                    "phaseFlip": true,
+                    "amount": 1
+                }
+            } 
+        },
+        {
+            "parameters": {
+                "sources": [
+                    "tim_1/samples/bass_1.wav",
+                    "tim_1/samples/bass_2.wav",
+                    "tim_1/samples/bass_3.wav",
+                    "tim_1/samples/bass_4.wav"
+                ],
+                "volume": 0.5,
+                "interval": 5000,
+                "noWavOverlapping": true,
+                "probability": 0.8,
+                "stereo": 0
+            },
+            "modMatrix": {
+                "volumeMod": {
+                    "lfo": "onGate",
+                    "phaseFlip": false,
+                    "amount": 0
+                },
+                "probabilityMod": {
+                    "lfo": "onGate",
+                    "phaseFlip": true,
+                    "amount": 0
+                }
+            } 
+        }
+    ]
+}

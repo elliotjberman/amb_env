@@ -45,6 +45,12 @@ export default class Swimmer {
     this.probabilityModLfo = this.findLfo('probabilityMod');
     this.probabilityModPhaseFlip = obj.modMatrix.probabilityMod.phaseFlip || false;
     this.probabilityModAmount = obj.modMatrix.probabilityMod.amount || 0;
+
+    if (obj.modMatrix.onGate) {
+      this.onGateLfo = this.findLfo('onGate');
+      this.onGatePhaseFlip = obj.modMatrix.onGate.phaseFlip || false;
+      this.onGateToggled = obj.modMatrix.onGate.toggled || false;
+    }
     
     this.phaseFlip = obj.modMatrix ? obj.modMatrix.phaseFlip : false;
 
@@ -93,6 +99,8 @@ export default class Swimmer {
     }
 
     this.probability = modifyParam(this.baseProbability, this.probabilityModAmount, this.probabilityModLfo, this.probabilityModPhaseFlip);
+  
+    if (this.onGateLfo) this.isOn = this.onGatePhaseFlip ? 1 - this.onGateLfo.getVoltage() : this.onGateLfo.getVoltage();
   }
 
   playSound() {
@@ -104,7 +112,9 @@ export default class Swimmer {
 
     console.log('clock');
 
-    if (Math.random() <= this.probability && goodToGo) {
+    const onGate = this.onGateToggled ? this.probability * this.isOn : this.probability;
+
+    if (Math.random() <= onGate && goodToGo) {
       if (this.isSequence) {
         this.howls[this.index].play();
         this.goToNextIndex();  

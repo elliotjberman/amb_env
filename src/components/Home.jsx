@@ -14,7 +14,7 @@ export default class Home extends React.Component {
     this.setState({title: config.title});
 
     let allLfos = config.lfos.map((lfo) => {
-      return new LFO(lfo.lfoName, lfo.rate, lfo.shape);
+      return new LFO(lfo.lfoName, lfo.rate, lfo.shape, lfo.dutyCycle);
     });
 
     this.swimmers = config.swimmers.map((swimmer) => {

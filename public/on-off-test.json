@@ -1,0 +1,75 @@
+{
+    "title": "on off test",
+    "lfos": [
+        {
+            "lfoName": "onGate",
+            "shape": "PULSE",
+            "rate": 5000,
+            "dutyCycle": 50
+        },
+        {
+            "lfoName": "playGate",
+            "shape": "PULSE",
+            "rate": 1000,
+            "dutyCycle": 10
+        }
+    ],
+    "swimmers": [
+        {
+            "parameters": {
+                "sources": [
+                    "/samples/Bb.wav"
+                ],
+                "volume": 0.75,
+                "interval": 50,
+                "probability": 1,
+                "stereo": 0
+            },
+            "modMatrix": {
+                "volumeMod": {
+                    "lfo": "onGate",
+                    "phaseFlip": false,
+                    "amount": 0
+                },
+                "probabilityMod": {
+                    "lfo": "playGate",
+                    "phaseFlip": false,
+                    "amount": 1
+                },
+                "onGate": {
+                    "lfo": "onGate",
+                    "phaseFlip": true,
+                    "toggled": true
+                }
+            } 
+        },
+        {
+            "parameters": {
+                "sources": [
+                    "/samples/C.wav"
+                ],
+                "volume": 0.75,
+                "interval": 50,
+                "probability": 1,
+                "stereo": 0
+            },
+            "modMatrix": {
+                "volumeMod": {
+                    "lfo": "onGate",
+                    "phaseFlip": false,
+                    "amount": 0
+                },
+                "probabilityMod": {
+                    "lfo": "playGate",
+                    "phaseFlip": false,
+                    "amount": 1
+                },
+                "onGate": {
+                    "lfo": "onGate",
+                    "phaseFlip": false,
+                    "toggled": true
+                }
+            } 
+        }
+    ]
+}

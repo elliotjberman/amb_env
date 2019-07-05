@@ -1,0 +1,37 @@
+{
+    "title": "hardcut test",
+    "lfos": [
+        {
+            "lfoName": "onGate",
+            "shape": "PULSE",
+            "rate": 60000,
+            "dutyCycle": 50
+        }
+    ],
+    "swimmers": [
+        {
+            "parameters": {
+                "sources": [
+                    "/samples/Bb.wav",
+                    "/samples/C.wav"
+                ],
+                "volume": 0.75,
+                "interval": 200,
+                "probability": 0.4,
+                "stereo": 0
+            },
+            "modMatrix": {
+                "volumeMod": {
+                    "lfo": "onGate",
+                    "phaseFlip": false,
+                    "amount": 0
+                },
+                "probabilityMod": {
+                    "lfo": "onGate",
+                    "phaseFlip": true,
+                    "amount": 0
+                }
+            } 
+        }
+    ]
+}

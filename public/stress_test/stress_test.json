@@ -83,7 +83,8 @@
                 ],
                 "volume": 0.5,
                 "interval": 250,
-                "probability": 1
+                "probability": 1,
+                "offset": 125
             },
             "modMatrix": { 
                 "volumeMod": {

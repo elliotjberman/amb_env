@@ -12,34 +12,6 @@
         {
             "parameters": {
                 "sources": [
-                    "tim_1/samples/pad_1.wav",
-                    "tim_1/samples/pad_2.wav",
-                    "tim_1/samples/pad_3.wav",
-                    "tim_1/samples/pad_4.wav"
-                ],
-                "volume": 0.75,
-                "isLooper": true,
-                "overlapAmount": -2000,
-                "playOnStart": true,
-                "probability": 0.9,
-                "stereo": 0
-            },
-            "modMatrix": {
-                "volumeMod": {
-                    "lfo": "onGate",
-                    "phaseFlip": false,
-                    "amount": 0
-                },
-                "probabilityMod": {
-                    "lfo": "onGate",
-                    "phaseFlip": false,
-                    "amount": 1
-                }
-            } 
-        },
-        {
-            "parameters": {
-                "sources": [
                     "tim_1/samples/pad_1a.wav",
                     "tim_1/samples/pad_2a.wav",
                     "tim_1/samples/pad_3a.wav",

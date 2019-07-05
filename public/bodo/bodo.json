@@ -1,0 +1,150 @@
+{
+    "title": "bodo",
+    "lfos": [
+        {
+            "lfoName": "onGate",
+            "shape": "PULSE",
+            "rate": 10000,
+            "dutyCycle": 10
+        }
+    ],
+    "swimmers": [
+        {
+            "parameters": {
+                "sources": [
+                    "bodo/samples/pad_1.wav",
+                    "bodo/samples/pad_2.wav",
+                    "bodo/samples/pad_3.wav",
+                    "bodo/samples/pad_4.wav",
+                    "bodo/samples/pad_5.wav"
+                ],
+                "volume": 1,
+                "interval": 500,
+                "noWavOverlapping": true,
+                "probability": 0.9,
+                "stereo": 0
+            },
+            "modMatrix": {
+                "volumeMod": {
+                    "lfo": "onGate",
+                    "amount": 0
+                },
+                "probabilityMod": {
+                    "lfo": "onGate",
+                    "amount": 0
+                }
+            } 
+        },
+        {
+            "parameters": {
+                "sources": [
+                    "bodo/samples/pop_1.wav",
+                    "bodo/samples/pop_2.wav",
+                    "bodo/samples/pop_3.wav",
+                    "bodo/samples/pop_4.wav",
+                    "bodo/samples/pop_5.wav",
+                    "bodo/samples/pop_6.wav",
+                    "bodo/samples/pop_7.wav",
+                    "bodo/samples/pop_8.wav",
+                    "bodo/samples/pop_9.wav",
+                    "bodo/samples/pop_10.wav",
+                    "bodo/samples/pop_11.wav",
+                    "bodo/samples/pop_12.wav",
+                    "bodo/samples/pop_13.wav",
+                    "bodo/samples/pop_14.wav",
+                    "bodo/samples/pop_15.wav",
+                    "bodo/samples/pop_16.wav"
+                ],
+                "volume": 1,
+                "interval": 250,
+                "probability": 0.4,
+                "stereo": 0
+            },
+            "modMatrix": {
+                "onGate": {
+                    "lfo": "onGate",
+                    "phaseFlip": true,
+                    "toggled": true
+                },
+                "volumeMod": {
+                    "lfo": "onGate",
+                    "amount": 0
+                },
+                "probabilityMod": {
+                    "lfo": "onGate",
+                    "amount": 0
+                }
+            } 
+        },
+        {
+            "parameters": {
+                "sources": [
+                    "bodo/samples/dry1.wav",
+                    "bodo/samples/dry2.wav",
+                    "bodo/samples/dry3.wav",
+                    "bodo/samples/dry4.wav",
+                    "bodo/samples/dry5.wav",
+                    "bodo/samples/dry6.wav",
+                    "bodo/samples/dry7.wav",
+                    "bodo/samples/dry8.wav",
+                    "bodo/samples/dry9.wav",
+                    "bodo/samples/dry10.wav",
+                    "bodo/samples/dry11.wav",
+                    "bodo/samples/dry12.wav",
+                    "bodo/samples/dry13.wav",
+                    "bodo/samples/dry14.wav"
+                ],
+                "volume": 0.25,
+                "interval": 3000,
+                "probability": 0.5,
+                "noRepeats": true,
+                "stereo": 0
+            },
+            "modMatrix": {
+                "onGate": {
+                    "lfo": "onGate",
+                    "phaseFlip": true,
+                    "toggled": true
+                },
+                "volumeMod": {
+                    "lfo": "onGate",
+                    "amount": 0
+                },
+                "probabilityMod": {
+                    "lfo": "onGate",
+                    "amount": 0
+                }
+            } 
+        },
+        {
+            "parameters": {
+                "sources": [
+                    "bodo/samples/pluck1.wav",
+                    "bodo/samples/pluck2.wav",
+                    "bodo/samples/pluck3.wav",
+                    "bodo/samples/pluck4.wav",
+                    "bodo/samples/pluck5.wav"
+                ],
+                "volume": 0.15,
+                "interval": 250,
+                "probability": 0.4,
+                "stereo": 0
+            },
+            "modMatrix": {
+                "onGate": {
+                    "lfo": "onGate",
+                    "phaseFlip": false,
+                    "toggled": true
+                },
+                "volumeMod": {
+                    "lfo": "onGate",
+                    "amount": 0
+                },
+                "probabilityMod": {
+                    "lfo": "onGate",
+                    "amount": 0
+                }
+            } 
+        }
+    ]
+}

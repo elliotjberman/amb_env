@@ -112,9 +112,9 @@
                     "/senn_1/samples/hi1.wav",
                     "/senn_1/samples/hi2.wav"
                 ],
-                "volume": 0.75,
+                "volume": 0.45,
                 "interval": 306000,
-                "probability": 1,
+                "probability": 0.9,
                 "stereo": 0
             },
             "modMatrix": {

@@ -1,0 +1,121 @@
+{
+    "title": "alva",
+    "lfos": [
+        {
+            "lfoName": "wave",
+            "shape": "square",
+            "rate": 5000
+        },
+        {
+            "lfoName": "onGate",
+            "shape": "PULSE",
+            "rate": 12000,
+            "dutyCycle": 50
+        }
+    ],
+    "swimmers": [
+        {
+            "parameters": {
+                "sources": [
+                    "alva/samples/kick.wav"
+                ],
+                "volume": 0.75,
+                "interval": 500,
+                "playOnStart": true,
+                "probability": 1,
+                "stereo": 0
+            },
+            "modMatrix": {
+                "volumeMod": {
+                    "lfo": "wave",
+                    "amount": 0
+                },
+                "probabilityMod": {
+                    "lfo": "wave",
+                    "amount": 0
+                }
+            } 
+        },
+        {
+            "parameters": {
+                "sources": [
+                    "alva/samples/hat.wav"
+                ],
+                "volume": 0.15,
+                "interval": 4000,
+                "playOnStart": true,
+                "offset": 375,
+                "probability": 1,
+                "stereo": 0
+            },
+            "modMatrix": {
+                "volumeMod": {
+                    "lfo": "wave",
+                    "amount": 0
+                },
+                "probabilityMod": {
+                    "lfo": "wave",
+                    "amount": 0
+                }
+            } 
+        },
+        {
+            "parameters": {
+                "sources": [
+                    "alva/samples/piano_1.wav",
+                    "alva/samples/piano_2.wav",
+                    "alva/samples/piano_3.wav",
+                    "alva/samples/piano_4.wav"
+                ],
+                "volume": 1,
+                "interval": 2000,
+                "probability": 0.75,
+                "noRepeats": true,
+                "stereo": 0
+            },
+            "modMatrix": {
+                "onGate": {
+                    "lfo": "onGate",
+                    "phaseFlip": false,
+                    "toggled": true
+                },
+                "volumeMod": {
+                    "lfo": "wave",
+                    "amount": 0
+                },
+                "probabilityMod": {
+                    "lfo": "wave",
+                    "amount": 0
+                }
+            } 
+        },
+        {
+            "parameters": {
+                "sources": [
+                    "alva/samples/noise.wav"
+                ],
+                "volume": 0.25,
+                "isLooper": true,
+                "overlapAmount": 0,
+                "playOnStart": true,
+                "probability": 1,
+                "stereo": 0
+            },
+            "modMatrix": {
+                "onGate": {
+                    "lfo": "onGate",
+                    "phaseFlip": false,
+                    "toggled": false
+                },
+                "volumeMod": {
+                    "lfo": "wave",
+                    "amount": 0
+                },
+                "probabilityMod": {
+                    "lfo": "wave",
+                    "amount": 0
+                }
+            } 
+        }
+    ]
+}

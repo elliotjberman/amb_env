@@ -23,10 +23,13 @@ export default class Swimmer {
     this.isSequence = obj.parameters.isSequence || false;
     this.noRepeats = obj.parameters.noRepeats || false;
     this.noWavOverlapping = obj.parameters.noWavOverlapping || false;
-
+    this.offset = obj.parameters.offset || 0;
     this.isLooper = obj.parameters.isLooper || false;
     this.overlapAmount = obj.parameters.overlapAmount || 0;
     this.playOnStart = obj.parameters.playOnStart || false;
+    
+    this.hardCutAtInterval = obj.parameters.hardCutAtInterval || false;
+    this.hardCutAtPlay = obj.parameters.hardCutAtPlay || false;
     
     this.lfos = obj.lfos;
     
@@ -64,7 +67,15 @@ export default class Swimmer {
     }
 
     if (this.isLooper) this.calcInterval();
+    
+    if (this.offset) {
+      console.log('applying offset...');
+      setTimeout(() => { this.queueAudio(this.interval); }, this.offset);
+      return;
+    }
+
     this.queueAudio(this.interval); 
+    return;
   }
 
   calcInterval() {
@@ -81,6 +92,7 @@ export default class Swimmer {
   lfoHandler() {
     const modifyParam = (baseParam, modFactor, lfo, phaseFlip) => {
       let voltage =  phaseFlip ? 1 - lfo.getVoltage() : lfo.getVoltage();
+      console.log(voltage);
       if (lfo) {
         let scaledParam = baseParam * voltage;
         return modFactor * scaledParam + (1 - modFactor) * baseParam;
@@ -108,13 +120,17 @@ export default class Swimmer {
 
     this.lastIndex = this.index;
 
+    if (this.hardCutAtInterval) this.howls[this.lastIndex].stop(); // this will override hardcutAtPlay
+
     const goodToGo = this.noWavOverlapping ? !this.howls[this.lastIndex].playing() : true;
 
-    console.log('clock');
+    // console.log('clock');
 
     const onGate = this.onGateToggled ? this.probability * this.isOn : this.probability;
 
     if (Math.random() <= onGate && goodToGo) {
+      if (this.hardCutAtPlay) this.howls[this.lastIndex].stop(); // you will get a pop, but that is the effect right?
+
       if (this.isSequence) {
         this.howls[this.index].play();
         this.goToNextIndex();  

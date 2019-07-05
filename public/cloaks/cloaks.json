@@ -206,9 +206,9 @@
                     "/cloaks/samples/synth_1.wav",
                     "/cloaks/samples/synth_2.wav"
                 ],
-                "volume": 0.15,
-                "interval": 35000,
-                "probability": 0.6,
+                "volume": 0.1,
+                "interval": 70000,
+                "probability": 0.4,
                 "stereo": 0
             },
             "modMatrix": {

@@ -92,7 +92,6 @@ export default class Swimmer {
   lfoHandler() {
     const modifyParam = (baseParam, modFactor, lfo, phaseFlip) => {
       let voltage =  phaseFlip ? 1 - lfo.getVoltage() : lfo.getVoltage();
-      console.log(voltage);
       if (lfo) {
         let scaledParam = baseParam * voltage;
         return modFactor * scaledParam + (1 - modFactor) * baseParam;
@@ -116,6 +115,8 @@ export default class Swimmer {
   }
 
   playSound() {
+    console.log('clock');
+    
     this.lfoHandler();
 
     this.lastIndex = this.index;
@@ -123,8 +124,6 @@ export default class Swimmer {
     if (this.hardCutAtInterval) this.howls[this.lastIndex].stop(); // this will override hardcutAtPlay
 
     const goodToGo = this.noWavOverlapping ? !this.howls[this.lastIndex].playing() : true;
-
-    // console.log('clock');
 
     const onGate = this.onGateToggled ? this.probability * this.isOn : this.probability;
 

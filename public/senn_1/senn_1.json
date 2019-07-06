@@ -113,7 +113,8 @@
                     "/senn_1/samples/hi2.wav"
                 ],
                 "volume": 0.45,
-                "interval": 306000,
+                "interval": 300000,
+                "offset": 6000,
                 "probability": 0.9,
                 "stereo": 0
             },

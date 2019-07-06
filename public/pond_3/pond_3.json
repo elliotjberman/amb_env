@@ -1,0 +1,145 @@
+{
+    "title": "pond 3",
+    "lfos": [
+        {
+            "lfoName": "onGate",
+            "shape": "PULSE",
+            "rate": 10000,
+            "dutyCycle": 10
+        }
+    ],
+    "swimmers": [
+        {
+            "parameters": {
+                "sources": [
+                    "pond_3/samples/pad_1.wav",
+                    "pond_3/samples/pad_2.wav",
+                    "pond_3/samples/pad_3.wav",
+                    "pond_3/samples/pad_4.wav",
+                    "pond_3/samples/pad_5.wav",
+                    "pond_3/samples/pad_6.wav",
+                    "pond_3/samples/pad_7.wav",
+                    "pond_3/samples/pad_8.wav",
+                    "pond_3/samples/pad_9.wav"
+                ],
+                "volume": 1,
+                "isLooper": true,
+                "overlapAmount": -4000,
+                "playOnStart": true,
+                "probability": 1,
+                "stereo": 0
+            },
+            "modMatrix": {
+                "volumeMod": {
+                    "lfo": "onGate",
+                    "amount": 0
+                },
+                "probabilityMod": {
+                    "lfo": "onGate",
+                    "amount": 0
+                }
+            } 
+        },
+        {
+            "parameters": {
+                "sources": [
+                    "pond_3/samples/tube_1.wav",
+                    "pond_3/samples/tube_3.wav",
+                    "pond_3/samples/tube_5.wav",
+                    "pond_3/samples/tube_7.wav",
+                    "pond_3/samples/tube_9.wav",
+                    "pond_3/samples/tube_11.wav"
+                ],
+                "volume": 0.15,
+                "interval": 6000,
+                "noWavOverlapping": true,
+                "probability": 0.25,
+                "stereo": 0
+            },
+            "modMatrix": {
+                "volumeMod": {
+                    "lfo": "onGate",
+                    "amount": 0
+                },
+                "probabilityMod": {
+                    "lfo": "onGate",
+                    "amount": 0
+                }
+            } 
+        },
+        {
+            "parameters": {
+                "sources": [
+                    "pond_3/samples/tube_2.wav",
+                    "pond_3/samples/tube_4.wav",
+                    "pond_3/samples/tube_6.wav",
+                    "pond_3/samples/tube_8.wav",
+                    "pond_3/samples/tube_10.wav"
+                ],
+                "volume": 0.15,
+                "interval": 7000,
+                "noWavOverlapping": true,
+                "probability": 0.25,
+                "stereo": 0
+            },
+            "modMatrix": {
+                "volumeMod": {
+                    "lfo": "onGate",
+                    "amount": 0
+                },
+                "probabilityMod": {
+                    "lfo": "onGate",
+                    "amount": 0
+                }
+            } 
+        },
+        {
+            "parameters": {
+                "sources": [
+                    "pond_3/samples/slicer_1.wav",
+                    "pond_3/samples/slicer_2.wav",
+                    "pond_3/samples/slicer_3.wav"
+                ],
+                "volume": 0.05,
+                "interval": 130000,
+                "noWavOverlapping": true,
+                "probability": 0.6,
+                "stereo": 0
+            },
+            "modMatrix": {
+                "volumeMod": {
+                    "lfo": "onGate",
+                    "amount": 0
+                },
+                "probabilityMod": {
+                    "lfo": "onGate",
+                    "amount": 0
+                }
+            } 
+        },
+        {
+            "parameters": {
+                "sources": [
+                    "pond_3/samples/sparkle_1.wav",
+                    "pond_3/samples/sparkle_2.wav",
+                    "pond_3/samples/sparkle_3.wav"
+                ],
+                "volume": 0.25,
+                "interval": 63000,
+                "noWavOverlapping": true,
+                "probability": 0.25,
+                "stereo": 0
+            },
+            "modMatrix": {
+                "volumeMod": {
+                    "lfo": "onGate",
+                    "amount": 0
+                },
+                "probabilityMod": {
+                    "lfo": "onGate",
+                    "amount": 0
+                }
+            } 
+        }
+    ]
+}

@@ -62,8 +62,6 @@
                     "/cloaks/samples/pad3.wav",
                     "/cloaks/samples/pad11.wav",
                     "/cloaks/samples/pad3.wav",
-                    "/cloaks/samples/pad14.wav",
-                    "/cloaks/samples/pad15.wav",
                     "/cloaks/samples/pad16.wav"
                 ],
                 "volume": 0.2,
@@ -151,7 +149,7 @@
                     "/cloaks/samples/sfx13.wav",
                     "/cloaks/samples/sfx14.wav"
                 ],
-                "volume": 0.2,
+                "volume": 0.1,
                 "interval": 30000,
                 "probability": 0.85,
                 "stereo": 0
@@ -289,7 +287,7 @@
                     "/cloaks/samples/harp10.wav",
                     "/cloaks/samples/harp11.wav"
                 ],
-                "volume": 0.4,
+                "volume": 0.2,
                 "interval": 20000,
                 "probability": 0.8,
                 "stereo": 0,
@@ -307,6 +305,227 @@
                     "amount": 0
                 }
             } 
-        }                           
+        },
+        {
+            "parameters": {
+                "sources": [
+                    "/cloaks/samples/gg_1.wav",
+                    "/cloaks/samples/gg_2.wav"
+                ],
+                "volume": 0.25,
+                "interval": 120000,
+                "probability": 0.5,
+                "stereo": 0
+            },
+            "modMatrix": {
+                "volumeMod": {
+                    "lfo": "clusterGate",
+                    "phaseFlip": false,
+                    "amount": 0
+                },
+                "probabilityMod": {
+                    "lfo": "pokeGate",
+                    "phaseFlip": false,
+                    "amount": 0
+                }
+            } 
+        },
+        {
+            "parameters": {
+                "sources": [
+                    "/cloaks/samples/organ_1.wav",
+                    "/cloaks/samples/organ_2.wav"
+                ],
+                "volume": 0.10,
+                "interval": 230000,
+                "playOnStart": true,
+                "offset": 5000,
+                "probability": 0.3,
+                "stereo": 0
+            },
+            "modMatrix": {
+                "volumeMod": {
+                    "lfo": "clusterGate",
+                    "phaseFlip": false,
+                    "amount": 0
+                },
+                "probabilityMod": {
+                    "lfo": "pokeGate",
+                    "phaseFlip": false,
+                    "amount": 0
+                }
+            } 
+        },
+        {
+            "parameters": {
+                "sources": [
+                    "/cloaks/samples/kill_me_1.wav",
+                    "/cloaks/samples/kill_me_2.wav",
+                    "/cloaks/samples/kill_me_3.wav"
+                ],
+                "volume": 0.15,
+                "interval": 165000,
+                "probability": 0.5,
+                "stereo": 0
+            },
+            "modMatrix": {
+                "volumeMod": {
+                    "lfo": "clusterGate",
+                    "phaseFlip": false,
+                    "amount": 0
+                },
+                "probabilityMod": {
+                    "lfo": "pokeGate",
+                    "phaseFlip": false,
+                    "amount": 0
+                }
+            } 
+        },
+        {
+            "parameters": {
+                "sources": [
+                    "/cloaks/samples/out_pad_1.wav",
+                    "/cloaks/samples/out_pad_2.wav"
+                ],
+                "volume": 0.05,
+                "interval": 290000,
+                "probability": 0.5,
+                "stereo": 0
+            },
+            "modMatrix": {
+                "volumeMod": {
+                    "lfo": "clusterGate",
+                    "phaseFlip": false,
+                    "amount": 0
+                },
+                "probabilityMod": {
+                    "lfo": "pokeGate",
+                    "phaseFlip": false,
+                    "amount": 0
+                }
+            } 
+        },
+        {
+            "parameters": {
+                "sources": [
+                    "/cloaks/samples/bells_1.wav",
+                    "/cloaks/samples/bells_2.wav",
+                    "/cloaks/samples/bells_3.wav"
+                ],
+                "volume": 0.05,
+                "interval": 90000,
+                "probability": 0.3,
+                "stereo": 0
+            },
+            "modMatrix": {
+                "volumeMod": {
+                    "lfo": "clusterGate",
+                    "phaseFlip": false,
+                    "amount": 0
+                },
+                "probabilityMod": {
+                    "lfo": "pokeGate",
+                    "phaseFlip": false,
+                    "amount": 0
+                }
+            } 
+        },
+        {
+            "parameters": {
+                "sources": [
+                    "/cloaks/samples/lo_1.wav",
+                    "/cloaks/samples/lo_2.wav"
+                ],
+                "volume": 0.4,
+                "interval": 311897,
+                "probability": 0.4,
+                "stereo": 0
+            },
+            "modMatrix": {
+                "volumeMod": {
+                    "lfo": "clusterGate",
+                    "phaseFlip": false,
+                    "amount": 0
+                },
+                "probabilityMod": {
+                    "lfo": "pokeGate",
+                    "phaseFlip": false,
+                    "amount": 0
+                }
+            } 
+        },
+        {
+            "parameters": {
+                "sources": [
+                    "/cloaks/samples/toro.wav"
+                ],
+                "volume": 0.4,
+                "interval": 447150,
+                "probability": 0.5,
+                "stereo": 0
+            },
+            "modMatrix": {
+                "volumeMod": {
+                    "lfo": "clusterGate",
+                    "phaseFlip": false,
+                    "amount": 0
+                },
+                "probabilityMod": {
+                    "lfo": "pokeGate",
+                    "phaseFlip": false,
+                    "amount": 0
+                }
+            } 
+        },
+        {
+            "parameters": {
+                "sources": [
+                    "/cloaks/samples/spank_1.wav",
+                    "/cloaks/samples/spank_2.wav",
+                    "/cloaks/samples/spank_3.wav"
+                ],
+                "volume": 0.2,
+                "interval": 367000,
+                "probability": 0.3,
+                "stereo": 0
+            },
+            "modMatrix": {
+                "volumeMod": {
+                    "lfo": "clusterGate",
+                    "phaseFlip": false,
+                    "amount": 0
+                },
+                "probabilityMod": {
+                    "lfo": "pokeGate",
+                    "phaseFlip": false,
+                    "amount": 0
+                }
+            } 
+        },
+        {
+            "parameters": {
+                "sources": [
+                    "/cloaks/samples/strand_1.wav",
+                    "/cloaks/samples/strand_2.wav",
+                    "/cloaks/samples/strand_3.wav"
+                ],
+                "volume": 0.25,
+                "interval": 85687,
+                "probability": 0.4,
+                "stereo": 0
+            },
+            "modMatrix": {
+                "volumeMod": {
+                    "lfo": "clusterGate",
+                    "phaseFlip": false,
+                    "amount": 0
+                },
+                "probabilityMod": {
+                    "lfo": "pokeGate",
+                    "phaseFlip": false,
+                    "amount": 0
+                }
+            } 
+        }                                      
     ]
 }
